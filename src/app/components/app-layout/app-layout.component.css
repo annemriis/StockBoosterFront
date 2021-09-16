@@ -1,0 +1,7 @@
+.layout-container {
+  border: black 3px solid;
+  height: 90%;
+  width: 70%;
+  justify-self: center;
+  align-self: center;
+}
