@@ -2,13 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-morale',
-  template: `
-    <p>
-      morale works!
-    </p>
-  `,
-  styles: [
-  ]
+  templateUrl: './morale.component.html',
+  styleUrls: ['./morale.component.css']
 })
 export class MoraleComponent implements OnInit {
 
