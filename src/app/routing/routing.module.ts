@@ -6,6 +6,7 @@ import {StockComponent} from "../components/stock/stock.component";
 import {MoraleComponent} from "../components/morale/morale.component";
 
 const routes: Routes = [
+  { path: '', redirectTo: '/app-layout', pathMatch: 'full' },
   { path: 'app-layout', component: AppLayoutComponent},
   { path: 'morale', component: MoraleComponent},
   { path: 'stock', component: StockComponent},
