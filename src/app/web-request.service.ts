@@ -15,9 +15,9 @@ export class WebRequestService {
     private http: HttpClient
   ) { }
 
-  /** GET ... from the server */
+  /** GET request */
   getRequest(uri: string): Observable<any> {
-    return this.http.get("http://localhost:8080/api/stock/GOOG");
+    return this.http.get("http://localhost:8080" + uri);
   }
 
   postRequest() {

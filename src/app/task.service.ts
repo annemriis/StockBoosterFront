@@ -8,10 +8,9 @@ export class TaskService {
 
   constructor(private webRequestService: WebRequestService) { }
 
-
-  /** GET ... from the server */
+  /** GET stock info from the server */
   getStock(symbol: String) {
-    return this.webRequestService.getRequest("api/stock/GOOG");
+    return this.webRequestService.getRequest("api/stock/" + symbol);
   }
 
 }
