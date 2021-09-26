@@ -12,13 +12,19 @@ import { RoutingModule } from './routing/routing.module';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {FlexLayoutModule} from "@angular/flex-layout";
+import { StockComponent } from './components/stock/stock.component';
+import { MoraleComponent } from './components/morale/morale.component';
+
+import { HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AppLayoutComponent,
-    HeaderComponent
+    HeaderComponent,
+    StockComponent,
+    MoraleComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +35,8 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     RoutingModule,
     MatIconModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
