@@ -1,7 +1,12 @@
 <div class="stock-container">
-  <p>
-    stock works!
-  </p>
+
+
+  <label>
+    <input #symbol placeholder="Search for stock symbol">
+    <button (click)="getStockData(symbol.value)" ></button>
+  </label>
+
+
 
 
 </div>

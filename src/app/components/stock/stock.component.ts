@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {WebRequestService} from "../../web-request.service";
 
 @Component({
   selector: 'app-stock',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockComponent implements OnInit {
 
-  constructor() { }
+  constructor(public http: HttpClient, private  apiService: WebRequestService) { }
+
+  json: JSON = JSON;
+
+  symbol: string = ""
+
+  data: string = "data can go here"
+
+  getStockData(symbol: string) {
+    return this.apiService.getRequest(symbol);
+  }
 
   ngOnInit(): void {
   }
