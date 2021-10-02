@@ -16,7 +16,6 @@ import { StockComponent } from './components/stock/stock.component';
 import { MoraleComponent } from './components/morale/morale.component';
 
 import { HttpClientModule} from "@angular/common/http";
-import { AboutUsComponent } from './components/about-us/about-us.component';
 
 
 @NgModule({
@@ -25,8 +24,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     AppLayoutComponent,
     HeaderComponent,
     StockComponent,
-    MoraleComponent,
-    AboutUsComponent
+    MoraleComponent
   ],
   imports: [
     BrowserModule,
