@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {Observable, from} from "rxjs";
 
 // All request methods.
 
@@ -20,9 +20,27 @@ export class WebRequestService {
     return this.http.get(this.url + uri);
   }
 
+  getReq(uri: string) {
+    return from(
+      fetch(
+        this.url + uri, {
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'GET',
+          mode: 'no-cors'
+        }
+      )
+    )
+  }
+
   postRequest() {
 
   }
 
   // delete jne.
+}
+
+interface Stock {
+
 }
