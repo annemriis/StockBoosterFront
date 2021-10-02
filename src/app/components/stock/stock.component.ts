@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {WebRequestService} from "../../web-request.service";
-import {observable} from "rxjs";
+import {observable, ObservedValueOf} from "rxjs";
 import {TaskService} from "../../task.service";
 
 @Component({
@@ -16,7 +16,7 @@ export class StockComponent implements OnInit {
   json: JSON = JSON;
   hasSubmitted: boolean = false;
 
-  symbol: string = ""
+  symb: ObservedValueOf<Promise<Response>> | undefined
 
 
   getStockData(symbol: string) {
@@ -28,7 +28,7 @@ export class StockComponent implements OnInit {
     );
      **/
     this.taskService.getStock(symbol.toUpperCase())
-      .subscribe(async (res: Response) => this.json = await res.json());
+      .subscribe((data) => this.symb = data);
   }
 
   ngOnInit(): void {
