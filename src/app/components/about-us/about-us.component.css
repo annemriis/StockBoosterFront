@@ -1,4 +1,4 @@
-.morale-container {
+.about-us-container {
   display: flex;
   justify-content: center;
   align-self: flex-start;
@@ -6,8 +6,10 @@
   height: 100%;
   border: 3px solid black;
 }
+
 @media only screen and (max-width: 600px) {
-  .morale-container {
+  .about-us-container {
     width: 18rem;
   }
 }
+
