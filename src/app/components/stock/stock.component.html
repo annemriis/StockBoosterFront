@@ -1,7 +1,22 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  h2 {text-align: center;}
+  p {text-align: center;}
+</style>
+<h2>Here you can search for a specific stock and get its information.</h2>
+
+
 <div class="stock-container">
-  <p>
-    stock works!
-  </p>
+
+
+  <label>
+    <input class="input" #symbol placeholder="Search for stock symbol">
+    <button  (click)="getStockData(symbol.value)" >Search</button>
+  </label>
+
+  <div>
+    {{this.json.toString()}}
+  </div>
 
 
 </div>
