@@ -7,9 +7,16 @@
 
 
 <div class="stock-container">
-  <p>
-    stock works!
-  </p>
+
+
+  <label>
+    <input class="input" #symbol placeholder="Search for stock symbol">
+    <button  (click)="getStockData(symbol.value)" >Search</button>
+  </label>
+
+  <div>
+    {{this.json.toString()}}
+  </div>
 
 
 </div>
