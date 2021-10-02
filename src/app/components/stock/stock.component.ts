@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {WebRequestService} from "../../web-request.service";
 import {observable} from "rxjs";
+import {TaskService} from "../../task.service";
 
 @Component({
   selector: 'app-stock',
@@ -10,7 +11,7 @@ import {observable} from "rxjs";
 })
 export class StockComponent implements OnInit {
 
-  constructor(public http: HttpClient, private  apiService: WebRequestService) { }
+  constructor(public http: HttpClient, private  apiService: WebRequestService, private taskService: TaskService) { }
 
   json: JSON = JSON;
   hasSubmitted: boolean = false;
@@ -21,9 +22,13 @@ export class StockComponent implements OnInit {
   getStockData(symbol: string) {
     this.hasSubmitted = true;
     console.log("api/stock/" + symbol.toUpperCase())
+    /**
     this.apiService.getReq("api/stock/" + symbol.toUpperCase()).subscribe(
       async (res: Response) => this.json = await res.json()
     );
+     **/
+    this.taskService.getStock(symbol.toUpperCase())
+      .subscribe(async (res: Response) => this.json = await res.json());
   }
 
   ngOnInit(): void {
