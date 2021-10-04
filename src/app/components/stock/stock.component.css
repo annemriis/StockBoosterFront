@@ -1,26 +1,21 @@
 .stock-container {
   display: flex;
   justify-content: center;
-  align-self: flex-start;
   width: 75rem;
   height: 100%;
   border: 3px solid black;
 }
 
-label {
-  align-self: center;
-  height: 20%;
-  width: 40%;
-}
+
 
 button {
   width: 25%;
-  height: 40%;
+  height: 8%;
   border: none;
   background: none;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   border-radius: 40px 40px;
-  align-self: center;
+  margin-top: 5%;
 }
 
 button:hover {
@@ -29,18 +24,16 @@ button:hover {
   box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
 }
 
-.input {
-  align-self: center;
-  justify-self: center;
-  height: 40%;
-  width: 50%;
-  border-radius: 20px 20px;
-  margin: 5%;
-  border: none;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+mat-form-field {
+  margin-top: 5%;
   padding: 1%;
-  text-align: center;
+  height: 8%;
+  /*box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;*/
+  border-radius: 50px 50px;
+}
 
+mat-card {
+  height: 30%;
 }
 
 

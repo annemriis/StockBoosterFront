@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {WebRequestService} from "../../web-request.service";
-import {observable, ObservedValueOf} from "rxjs";
 import {TaskService} from "../../task.service";
+import {StockInterface} from "../../Interface/StockInterface";
+
 
 @Component({
   selector: 'app-stock',
@@ -16,7 +17,7 @@ export class StockComponent implements OnInit {
   json: JSON = JSON;
   hasSubmitted: boolean = false;
 
-  symb: ObservedValueOf<Promise<Response>> | undefined
+  symbols: StockInterface | undefined
 
 
   getStockData(symbol: string) {
@@ -28,7 +29,10 @@ export class StockComponent implements OnInit {
     );
      **/
     this.taskService.getStock(symbol.toUpperCase())
-      .subscribe((data) => this.symb = data);
+      .subscribe((data) => this.symbols = data);
+    if (this.symbols === undefined) {
+      // Need to implement that the stock dosent exsits
+    }
   }
 
   ngOnInit(): void {
