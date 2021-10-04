@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable, from} from "rxjs";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {Observable, from, ObservedValueOf} from "rxjs";
+import {StockInterface} from "./Interface/StockInterface";
 
 // All request methods.
 
@@ -15,12 +16,20 @@ export class WebRequestService {
     private http: HttpClient
   ) { }
 
-  /** GET request */
-  getRequest(uri: string): Observable<any> {
-    return this.http.get(this.url + uri);
+  headers = new HttpHeaders({
+    'Access-Control-Allow-Origin': '*',
+    'content-type': 'application/json',
+    "Access-Control-Allow-Methods": "GET",
+
+  } )
+
+
+  getRequest(uri:string): Observable<StockInterface> {
+    return this.http.get<StockInterface>(this.url + uri, {headers: this.headers})
   }
 
-  getReq(uri: string) {
+
+  getReq(uri: string): Observable<ObservedValueOf<Promise<Response>>> {
     return from(
       fetch(
         this.url + uri, {
@@ -39,8 +48,4 @@ export class WebRequestService {
   }
 
   // delete jne.
-}
-
-interface Stock {
-
 }

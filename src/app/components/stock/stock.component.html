@@ -6,17 +6,22 @@
 <h2>Here you can search for a specific stock and get its information.</h2>
 
 
-<div class="stock-container">
+<div class="stock-container"
+     fxLayout="wrap start"
+     fxLayout.xs="column"
+     fxLayoutGap="50px">
 
 
-  <label>
-    <input class="input" #symbol placeholder="Search for stock symbol">
-    <button  (click)="getStockData(symbol.value)" >Search</button>
-  </label>
+  <mat-form-field color="primary" fxFlex="55">
+    <mat-label></mat-label>
+    <input matInput #symbol placeholder="Search for stock symbol"/>
+  </mat-form-field>
+  <button mat-button  (click)="getStockData(symbol.value)" fxFlex="10" >Search</button>
 
-  <div>
-    {{this.json.toString()}}
-  </div>
+
+  <mat-card fxFlex="50" fxLayout="column">
+    <mat-card-content>{{symbols}}</mat-card-content>
+  </mat-card>
 
 
 </div>

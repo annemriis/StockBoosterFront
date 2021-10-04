@@ -14,9 +14,14 @@ import {MatButtonModule} from "@angular/material/button";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { StockComponent } from './components/stock/stock.component';
 import { MoraleComponent } from './components/morale/morale.component';
-
 import { HttpClientModule} from "@angular/common/http";
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {BrowserAnimationsModuleConfig} from "@angular/platform-browser/animations";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatDividerModule} from "@angular/material/divider";
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
@@ -38,7 +43,14 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     MatIconModule,
     MatButtonModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDividerModule,
+    MatCardModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
