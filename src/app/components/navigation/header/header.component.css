@@ -20,7 +20,7 @@ li:hover, li:active {
 }
 mat-toolbar {
   border-radius: 3px;
-  box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+  box-shadow: 5px 5px #4DB6AC, 10px 10px #80CBC4, 15px 15px #B2DFDB, 20px 20px #E0F2F1;
 
 }
 @media(max-width: 959px){
