@@ -1,0 +1,16 @@
+<div class="stock-container"
+     fxLayout="wrap start">
+  <mat-card>
+    <mat-card-content>
+      <canvas baseChart width="400" height="400"
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"
+              [plugins]="lineChartPlugins">
+      </canvas>
+    </mat-card-content>
+  </mat-card>
+</div>

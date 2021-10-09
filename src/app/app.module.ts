@@ -22,6 +22,9 @@ import {BrowserAnimationsModuleConfig} from "@angular/platform-browser/animation
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatCardModule} from "@angular/material/card";
+import { ChartsModule } from 'ng2-charts';
+import { StockGraphicalInterfaceComponent } from './components/stock-graphical-interface/stock-graphical-interface/stock-graphical-interface.component';
+
 
 
 @NgModule({
@@ -31,7 +34,8 @@ import {MatCardModule} from "@angular/material/card";
     HeaderComponent,
     StockComponent,
     MoraleComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    StockGraphicalInterfaceComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,7 @@ import {MatCardModule} from "@angular/material/card";
     ReactiveFormsModule,
     MatDividerModule,
     MatCardModule,
-
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
