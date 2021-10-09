@@ -1,3 +1,4 @@
+
 export interface StockInterface {
   symbol: string,
   open: number,

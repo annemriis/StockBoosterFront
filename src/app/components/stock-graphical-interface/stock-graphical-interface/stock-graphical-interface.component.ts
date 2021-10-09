@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {StockInterface} from "../../../Interface/StockInterface";
-import {ChartDataset, ChartOptions} from "chart.js";
-import {Color, Label} from "ng2-charts";
+import {ChartDataSets, ChartOptions} from "chart.js";
+import {ChartsModule, Color, Label} from "ng2-charts";
+import { ChartType} from "chart.js";
 
 @Component({
   selector: 'app-stock-graphical-interface',
@@ -10,16 +10,27 @@ import {Color, Label} from "ng2-charts";
 })
 export class StockGraphicalInterfaceComponent implements OnInit {
 
-  constructor(public stockInterface: StockInterface) { }
+  constructor() {
+  }
+
+  symbol: string | null = null
+  open: number | null = null
+  close: number | null = null
+  high: number | null = null
+  volume: bigint | null = null
+  lastDate: string | null = null
+  stockDateInfo: string[] | null = null
+  stockCloseInfo: number[] | null = null
+
 
   ngOnInit(): void {
   }
 
-  public lineChartData: ChartDataset[] = [
-    { data: this.stockInterface.stockCloseInfo, label: this.stockInterface.symbol}
+  public lineChartData: ChartDataSets[] = [
+    { data: this.stockCloseInfo === null ? [] : this.stockCloseInfo, label: this.symbol === null ? "" : this.symbol}
   ]
 
-  lineChartLabels: Label[] = this.stockInterface.stockDateInfo;
+  lineChartLabels: Label[] = this.stockDateInfo === null ? [] : this.stockDateInfo;
 
   public lineChartOptions: (ChartOptions) = {
     responsive: true,
@@ -31,9 +42,34 @@ export class StockGraphicalInterfaceComponent implements OnInit {
     },
   ];
   public lineChartLegend = true;
-  public lineChartType = 'line';
+  public lineChartType = 'line' as ChartType
+
   public lineChartPlugins = [];
 
 
+  public setSymbol(symbol: string) {
+    this.symbol = symbol
+  }
+  public setOpen(open: number) {
+    this.open = open
+  }
+  public setClose(close: number) {
+    this.close = close
+  }
+  public setHigh(high: number) {
+    this.high = high
+  }
+  public setVolume(volume: bigint) {
+    this.volume = volume
+  }
+  public setLastDate(lastDate: string) {
+    this.lastDate = lastDate
+  }
+  public setStockDateInfo(stockDateInfo: string[],) {
+    this.stockDateInfo = stockDateInfo
+  }
+  public setStockCloseInfo(stockCloseInfo: number[]) {
+    this.stockCloseInfo = stockCloseInfo
+  }
 
 }
