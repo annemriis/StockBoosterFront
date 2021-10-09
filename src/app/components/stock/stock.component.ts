@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {WebRequestService} from "../../web-request.service";
 import {TaskService} from "../../task.service";
 import {StockInterface} from "../../Interface/StockInterface";
+import {StockGraphicalInterfaceComponent} from "../stock-graphical-interface/stock-graphical-interface/stock-graphical-interface.component";
 
 
 @Component({
@@ -14,10 +15,10 @@ export class StockComponent implements OnInit {
 
   constructor(public http: HttpClient, private  apiService: WebRequestService, private taskService: TaskService) { }
 
-  json: JSON = JSON;
   hasSubmitted: boolean = false;
 
-  symbols: StockInterface | undefined
+  stockInterface: StockInterface | undefined
+  stockInformationComponent: StockGraphicalInterfaceComponent | undefined
 
 
   getStockData(symbol: string) {
@@ -29,8 +30,10 @@ export class StockComponent implements OnInit {
     );
      **/
     this.taskService.getStock(symbol.toUpperCase())
-      .subscribe((data) => this.symbols = data);
-    if (this.symbols === undefined) {
+      .subscribe((data) => this.stockInterface = data);
+      this.stockInformationComponent = new StockGraphicalInterfaceComponent()
+      this.stockInformationComponent.buildStockInfoWithInterface(this.stockInterface)
+    if (this.stockInterface === undefined) {
       // Need to implement that the stock dosent exsits
     }
   }

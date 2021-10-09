@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ChartDataSets, ChartOptions} from "chart.js";
 import {ChartsModule, Color, Label} from "ng2-charts";
 import { ChartType} from "chart.js";
+import {StockInterface} from "../../../Interface/StockInterface";
 
 @Component({
   selector: 'app-stock-graphical-interface',
@@ -47,28 +48,40 @@ export class StockGraphicalInterfaceComponent implements OnInit {
   public lineChartPlugins = [];
 
 
-  public setSymbol(symbol: string) {
+  buildStockInfoWithInterface(stockInterface: StockInterface | undefined) {
+    this.setSymbol(stockInterface === undefined ? null : stockInterface.symbol)
+    this.setOpen(stockInterface === undefined ? null : stockInterface.open)
+    this.setClose(stockInterface === undefined ? null : stockInterface.close)
+    this.setHigh(stockInterface === undefined ? null : stockInterface.high)
+    this.setVolume(stockInterface === undefined ? null : stockInterface.volume)
+    this.setLastDate(stockInterface === undefined ? null : stockInterface.lastDate)
+    this.setStockCloseInfo(stockInterface === undefined ? null : stockInterface.stockCloseInfo)
+    this.setStockDateInfo(stockInterface === undefined ? null : stockInterface.stockDateInfo)
+  }
+
+
+  public setSymbol(symbol: null | string) {
     this.symbol = symbol
   }
-  public setOpen(open: number) {
+  public setOpen(open: null | number) {
     this.open = open
   }
-  public setClose(close: number) {
+  public setClose(close: null | number) {
     this.close = close
   }
-  public setHigh(high: number) {
+  public setHigh(high: null | number) {
     this.high = high
   }
-  public setVolume(volume: bigint) {
+  public setVolume(volume: null | bigint) {
     this.volume = volume
   }
-  public setLastDate(lastDate: string) {
+  public setLastDate(lastDate: null | string) {
     this.lastDate = lastDate
   }
-  public setStockDateInfo(stockDateInfo: string[],) {
+  public setStockDateInfo(stockDateInfo: null | string[]) {
     this.stockDateInfo = stockDateInfo
   }
-  public setStockCloseInfo(stockCloseInfo: number[]) {
+  public setStockCloseInfo(stockCloseInfo: null | number[]) {
     this.stockCloseInfo = stockCloseInfo
   }
 
