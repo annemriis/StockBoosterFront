@@ -3,19 +3,16 @@
   justify-content: center;
   width: 75rem;
   height: 100%;
-  border: 3px solid black;
+  border: 1px solid black;
 }
 
-
-
 button {
-  width: 25%;
+  width: 20%;
   height: 8%;
   border: none;
   background: none;
   box-shadow: 0 1px 3px #80CBC4, 0 1px 2px #B2DFDB;
   border-radius: 40px 40px;
-  margin-top: 5%;
 }
 
 button:hover {
@@ -25,19 +22,15 @@ button:hover {
 }
 
 mat-form-field {
+  width: 60%;
   margin-top: 5%;
   padding: 1%;
   height: 8%;
-  box-shadow: rgba(0, 0, 0, 0.3) 0 19px 38px, rgba(0, 0, 0, 0.22) 0 15px 12px;
-  border-radius: 50px 50px;
+  border-radius: 40px 40px;
 }
 
-mat-card {
-  height: 30%;
-}
-
-table {
-  width: 70%;
+app-stock-graphical-interface {
+  width: 90%
 }
 
 @media only screen and (max-width: 600px) {

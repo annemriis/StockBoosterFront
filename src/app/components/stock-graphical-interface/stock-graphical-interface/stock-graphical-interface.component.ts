@@ -22,16 +22,22 @@ export class StockGraphicalInterfaceComponent implements OnInit {
   lastDate: string | null = null
   stockDateInfo: string[] | null = null
   stockCloseInfo: number[] | null = null
+  dataSource = [{"symbol":"GOOG","open":2798.12,"close":2801.12,"high":2806.34,"volume":946421,"lastDate":"2021-10-08"}];
 
 
   ngOnInit(): void {
   }
 
   public lineChartData: ChartDataSets[] = [
-    { data: this.stockCloseInfo === null ? [] : this.stockCloseInfo, label: this.symbol === null ? "" : this.symbol}
+    { data: [2801.12,2783.71,2747.08,2723.54,2675.3,2729.25,2665.31,2690.42,2723.68,2830.02,2852.66,2836.53,
+        2818.77,2792.93,2780.34,2829.27,2887.47,2904.12,2868.12,2869.3,2838.42,2898.27], label: 'Stock close price' }
+    //{ data: this.stockCloseInfo === null ? [] : this.stockCloseInfo, label: this.symbol === null ? "" : this.symbol}
   ]
 
-  lineChartLabels: Label[] = this.stockDateInfo === null ? [] : this.stockDateInfo;
+  lineChartLabels: Label[] = ["2021-10-08","2021-10-07","2021-10-06","2021-10-05","2021-10-04","2021-10-01","2021-09-30",
+    "2021-09-29","2021-09-28","2021-09-27","2021-09-24","2021-09-23","2021-09-22","2021-09-21","2021-09-20",
+    "2021-09-17","2021-09-16","2021-09-15","2021-09-14","2021-09-13","2021-09-10","2021-09-09"];
+    //this.stockDateInfo === null ? [] : this.stockDateInfo;
 
   public lineChartOptions: (ChartOptions) = {
     responsive: true,
@@ -39,12 +45,12 @@ export class StockGraphicalInterfaceComponent implements OnInit {
   public lineChartColors: Color[] = [
     {
       borderColor: 'black',
-      backgroundColor: 'rgba(255,0,0,0.3)',
+      backgroundColor: '#80CBC4',
+      borderWidth: 2,
     },
   ];
   public lineChartLegend = true;
   public lineChartType = 'line' as ChartType
-
   public lineChartPlugins = [];
 
 
@@ -57,6 +63,7 @@ export class StockGraphicalInterfaceComponent implements OnInit {
     this.setLastDate(stockInterface === undefined ? null : stockInterface.lastDate)
     this.setStockCloseInfo(stockInterface === undefined ? null : stockInterface.stockCloseInfo)
     this.setStockDateInfo(stockInterface === undefined ? null : stockInterface.stockDateInfo)
+    //this.dataSource = [{"symbol":"GOOG","open":2798.12,"close":2801.12,"high":2806.34,"volume":946421,"lastDate":"2021-10-08"}];
   }
 
 

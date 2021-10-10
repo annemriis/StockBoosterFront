@@ -19,7 +19,6 @@ export class StockComponent implements OnInit {
 
   stockInterface: StockInterface | undefined
   stockInformationComponent: StockGraphicalInterfaceComponent | undefined
-  dataSource = [{"symbol":"GOOG","open":2798.12,"close":2801.12,"high":2806.34,"volume":946421,"lastDate":"2021-10-08"}];
 
 
   getStockData(symbol: string) {

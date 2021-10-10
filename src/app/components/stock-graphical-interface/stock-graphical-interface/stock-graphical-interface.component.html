@@ -1,8 +1,50 @@
-<div class="stock-container"
-     fxLayout="wrap start">
+<div class="stock-container" fxLayout="column" fxLayoutAlign="space-evenly center">
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+    </ng-container>
+
+    <!-- Open Column -->
+    <ng-container matColumnDef="open">
+      <th mat-header-cell *matHeaderCellDef> Open </th>
+      <td mat-cell *matCellDef="let element"> {{element.open}} </td>
+    </ng-container>
+
+    <!-- Close Column -->
+    <ng-container matColumnDef="close">
+      <th mat-header-cell *matHeaderCellDef> Close </th>
+      <td mat-cell *matCellDef="let element"> {{element.close}} </td>
+    </ng-container>
+
+    <!-- High Column -->
+    <ng-container matColumnDef="high">
+      <th mat-header-cell *matHeaderCellDef> High </th>
+      <td mat-cell *matCellDef="let element"> {{element.high}} </td>
+    </ng-container>
+
+    <!-- Volume Column -->
+    <ng-container matColumnDef="volume">
+      <th mat-header-cell *matHeaderCellDef> Volume </th>
+      <td mat-cell *matCellDef="let element"> {{element.volume}} </td>
+    </ng-container>
+
+    <!-- Last Date Column -->
+    <ng-container matColumnDef="lastDate">
+      <th mat-header-cell *matHeaderCellDef> Last Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastDate}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['symbol', 'open', 'close', 'high', 'volume', 'lastDate']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['symbol', 'open', 'close', 'high', 'volume', 'lastDate'];"></tr>
+  </table>
+
   <mat-card>
     <mat-card-content>
-      <canvas baseChart width="400" height="400"
+      <canvas baseChart width="380" height="120"
               [datasets]="lineChartData"
               [labels]="lineChartLabels"
               [options]="lineChartOptions"
