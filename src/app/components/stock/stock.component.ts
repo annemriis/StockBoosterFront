@@ -19,6 +19,7 @@ export class StockComponent implements OnInit {
 
   stockInterface: StockInterface | undefined
   stockInformationComponent: StockGraphicalInterfaceComponent | undefined
+  dataSource = [{"symbol":"GOOG","open":2798.12,"close":2801.12,"high":2806.34,"volume":946421,"lastDate":"2021-10-08"}];
 
 
   getStockData(symbol: string) {
@@ -34,7 +35,7 @@ export class StockComponent implements OnInit {
       this.stockInformationComponent = new StockGraphicalInterfaceComponent()
       this.stockInformationComponent.buildStockInfoWithInterface(this.stockInterface)
     if (this.stockInterface === undefined) {
-      // Need to implement that the stock dosent exsits
+      // Need to implement that the stock doesn't exist
     }
   }
 

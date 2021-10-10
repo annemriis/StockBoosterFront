@@ -18,10 +18,10 @@ import { HttpClientModule} from "@angular/common/http";
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {BrowserAnimationsModuleConfig} from "@angular/platform-browser/animations";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatCardModule} from "@angular/material/card";
+import {MatTableModule} from "@angular/material/table";
 import { ChartsModule } from 'ng2-charts';
 import { StockGraphicalInterfaceComponent } from './components/stock-graphical-interface/stock-graphical-interface/stock-graphical-interface.component';
 
@@ -54,6 +54,7 @@ import { StockGraphicalInterfaceComponent } from './components/stock-graphical-i
     ReactiveFormsModule,
     MatDividerModule,
     MatCardModule,
+    MatTableModule,
     ChartsModule
   ],
   providers: [],
