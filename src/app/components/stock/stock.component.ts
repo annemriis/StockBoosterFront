@@ -21,7 +21,7 @@ export class StockComponent implements OnInit {
   stockInformationComponent: StockGraphicalInterfaceComponent | undefined
 
 
-  getStockData(symbol: string) {
+  getStockData = (symbol: string) => {
     this.hasSubmitted = true;
     console.log("api/stock/" + symbol.toUpperCase())
     /**
@@ -29,10 +29,13 @@ export class StockComponent implements OnInit {
       async (res: Response) => this.json = await res.json()
     );
      **/
-    this.taskService.getStock(symbol.toUpperCase())
-      .subscribe((data) => this.stockInterface = data);
+    this.taskService.getStock(symbol.toUpperCase()).subscribe((data) => {
+      this.stockInterface = data
+      console.log(this.stockInterface)
       this.stockInformationComponent = new StockGraphicalInterfaceComponent()
       this.stockInformationComponent.buildStockInfoWithInterface(this.stockInterface)
+    });
+
     if (this.stockInterface === undefined) {
       // Need to implement that the stock doesn't exist
     }
