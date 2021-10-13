@@ -1,6 +1,6 @@
 <div class="stock-container" fxLayout="column" fxLayoutAlign="space-evenly center">
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <table #myTable mat-table [dataSource]="dataSource" class="dataTable">
 
     <!-- Symbol Column -->
     <ng-container matColumnDef="symbol">

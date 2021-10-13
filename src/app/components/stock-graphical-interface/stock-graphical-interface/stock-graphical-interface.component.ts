@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnChanges, OnInit, SimpleChanges, ViewChild, ViewChildren} from '@angular/core';
 import {ChartDataSets, ChartOptions} from "chart.js";
 import {Color, Label} from "ng2-charts";
 import { ChartType} from "chart.js";
 import {StockInterface} from "../../../Interface/StockInterface";
+import {MatTable, MatTableDataSource} from "@angular/material/table";
+
 
 @Component({
   selector: 'app-stock-graphical-interface',
   templateUrl: './stock-graphical-interface.component.html',
   styleUrls: ['./stock-graphical-interface.component.css']
 })
-export class StockGraphicalInterfaceComponent implements OnInit {
+export class StockGraphicalInterfaceComponent implements OnInit, AfterViewInit, OnChanges {
+  @ViewChild('myTable') myTable!: MatTable<any>;
 
-  constructor() {
-  }
+  constructor() { }
 
   symbol: string | null = null
   open: number | null = null
@@ -22,11 +24,25 @@ export class StockGraphicalInterfaceComponent implements OnInit {
   lastDate: string | null = null
   stockDateInfo: string[] | null = null
   stockCloseInfo: number[] | null = null
-  dataSource = [{"symbol":"","open":0,"close":0,"high":0,"volume":0,"lastDate":""}]
-
-
+  dataSource = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "",
+    "stockDateInfo": this.stockDateInfo ? this.stockDateInfo: [],
+    "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],
+  }];
 
   ngOnInit(): void {
+    console.log("Comp init")
+  }
+  ngAfterViewInit(): void {
+    console.log("Here")
+    this.dataSource = [{"symbol": "AAA", "open": 3, "close": 4,"high": 5,"volume": 6,"lastDate": "",
+      "stockDateInfo": this.stockDateInfo ? this.stockDateInfo: [],
+      "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],
+    }];
+    this.myTable.dataSource = this.dataSource
+    console.log(this.myTable)
+  }
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("Help")
   }
 
   public lineChartData: ChartDataSets[] = [ { data: this.stockCloseInfo === null ? [] : this.stockCloseInfo, label: this.symbol === null ? "" : this.symbol}
@@ -60,10 +76,21 @@ export class StockGraphicalInterfaceComponent implements OnInit {
     this.setLastDate(stockInterface === undefined ? null : stockInterface.lastDate)
     this.setStockCloseInfo(stockInterface === undefined ? null : stockInterface.stockCloseInfo)
     this.setStockDateInfo(stockInterface === undefined ? null : stockInterface.stockDateInfo)
-    this.dataSource = [{"symbol":this.symbol?this.symbol:"","open":this.open?this.open:0,"close":this.close?this.close:0,"high":this.high?this.high:0,"volume":this.volume?this.volume:0,"lastDate":this.lastDate?this.lastDate:""}];
+    this.dataSource = [{
+      "symbol": this.symbol ? this.symbol : "",
+      "open": this.open ? this.open : 0,
+      "close": this.close ? this.close : 0,
+      "high": this.high ? this.high : 0,
+      "volume": this.volume ? this.volume : 0,
+      "lastDate": this.lastDate ? this.lastDate : "",
+      "stockDateInfo": this.stockDateInfo ? this.stockDateInfo: [],
+      "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],
+    }];
+    console.log(this.myTable)
+    this.myTable.dataSource = this.dataSource
     console.log(this.dataSource)
+    this.myTable.renderRows()
   }
-
 
   public setSymbol(symbol: null | string) {
     this.symbol = symbol

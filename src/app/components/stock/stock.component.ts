@@ -18,7 +18,7 @@ export class StockComponent implements OnInit {
   hasSubmitted: boolean = false;
 
   stockInterface: StockInterface | undefined
-  stockInformationComponent: StockGraphicalInterfaceComponent | undefined
+  stockInformationComponent!: StockGraphicalInterfaceComponent
 
 
   getStockData = (symbol: string) => {
@@ -29,10 +29,11 @@ export class StockComponent implements OnInit {
       async (res: Response) => this.json = await res.json()
     );
      **/
+    console.log(this)
     this.taskService.getStock(symbol.toUpperCase()).subscribe((data) => {
       this.stockInterface = data
       console.log(this.stockInterface)
-      this.stockInformationComponent = new StockGraphicalInterfaceComponent()
+
       this.stockInformationComponent.buildStockInfoWithInterface(this.stockInterface)
     });
 
@@ -42,6 +43,8 @@ export class StockComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.stockInformationComponent = new StockGraphicalInterfaceComponent()
+    console.log("New object")
   }
 
 

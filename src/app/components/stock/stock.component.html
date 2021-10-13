@@ -10,10 +10,9 @@
     <mat-label>Enter a stock symbol</mat-label>
     <input matInput #symbol/>
   </mat-form-field>
-  <button mat-button  (click)="getStockData(symbol.value)">Search</button>
+  <button mat-button (click)="getStockData(symbol.value)">Search</button>
 
   <app-stock-graphical-interface fxFlex="10" fxLayoutGap="20px"></app-stock-graphical-interface>
-
 
 </div>
 
