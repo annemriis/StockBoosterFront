@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {WebRequestService} from "../../web-request.service";
 import {TaskService} from "../../task.service";
@@ -19,7 +19,8 @@ export class StockComponent implements OnInit {
   @ViewChild(MatTable) myTable!: MatTable<any>;
   @ViewChild(BaseChartDirective) canvas!: BaseChartDirective;
 
-  constructor(public http: HttpClient, private  apiService: WebRequestService, private taskService: TaskService) { }
+  constructor(public http: HttpClient, private  apiService: WebRequestService, private taskService: TaskService) {
+  }
 
   hasSubmitted: boolean = false;
 
@@ -50,7 +51,7 @@ export class StockComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.stockInformationComponent = new StockGraphicalInterfaceComponent()
+    this.stockInformationComponent = new StockGraphicalInterfaceComponent();
   }
 
   public lineChartData: ChartDataSets[] = [{

@@ -1,14 +1,21 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  h2 {text-align: center;}
-  p {text-align: center;}
-</style>
-<h2>Here you can enter a stock that you might have in your portfolio and you will be displayed a worse performing stock to boost your morale.</h2>
+<div class="stock-container" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="50px">
+  <h2  fxLayout="row" fxLayoutAlign="center center">Here you can search for a specific stock and get its information.</h2>
 
-<div class="morale-container">
-  <p>
-    morale works!
-  </p>
+  <div class="search" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <mat-form-field color="primary" appearance="outline">
+      <mat-label>Enter a stock symbol</mat-label>
+      <input matInput #symbol/>
+    </mat-form-field>
+    <button mat-button (click)="getStockData(symbol.value)">Search</button>
+  </div>
+
+
+
+  <app-stock-graphical-interface *ngIf="hasSubmitted"
+    [symbol]="stockInformationComponent.symbol"
+                                 [open]="stockInformationComponent.open"
+                                 [high]="stockInformationComponent.high"
+  ></app-stock-graphical-interface>
 
 
 </div>

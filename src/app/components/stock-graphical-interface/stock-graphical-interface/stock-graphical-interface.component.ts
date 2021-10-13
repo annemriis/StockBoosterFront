@@ -1,4 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges
+} from '@angular/core';
 import {StockInterface} from "../../../Interface/StockInterface";
 
 
@@ -7,33 +16,51 @@ import {StockInterface} from "../../../Interface/StockInterface";
   templateUrl: './stock-graphical-interface.component.html',
   styleUrls: ['./stock-graphical-interface.component.css']
 })
-export class StockGraphicalInterfaceComponent implements OnInit {
+export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
 
-  constructor() { }
+  @Input() symbol: string
+  @Input() open: number
+  @Input() close: number
+  @Input() high: number
+  @Input() volume: number
+  @Input() lastDate: string
+  @Input() stockDateInfo: string[]
+  @Input() stockCloseInfo: number[]
+  @Input() dataSource = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "", "stockDateInfo": [""], "stockCloseInfo": [0]}];
 
-  symbol: string | null = null
-  open: number | null = null
-  close: number | null = null
-  high: number | null = null
-  volume: number | null = null
-  lastDate: string | null = null
-  stockDateInfo: string[] | null = null
-  stockCloseInfo: number[] | null = null
-  dataSource = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "", "stockDateInfo": [""], "stockCloseInfo": [0]}];
+
+  constructor() {
+    this.symbol = ''
+    this.open = 1
+    this.close = 1
+    this.high = 1
+    this.volume = 1
+    this.lastDate = ""
+    this.stockDateInfo = []
+    this.stockCloseInfo = []
+    this.dataSource = []
+  }
+
+
+  ngOnChanges(changes: SimpleChanges) {
+     // here you will get the data from parent once the input param is change
+    console.log(this.symbol)
+  }
 
   ngOnInit(): void {
 
   }
 
-  buildStockInfoWithInterface(stockInterface: StockInterface | undefined) {
-    this.setSymbol(stockInterface === undefined ? null : stockInterface.symbol)
-    this.setOpen(stockInterface === undefined ? null : stockInterface.open)
-    this.setClose(stockInterface === undefined ? null : stockInterface.close)
-    this.setHigh(stockInterface === undefined ? null : stockInterface.high)
-    this.setVolume(stockInterface === undefined ? null : stockInterface.volume)
-    this.setLastDate(stockInterface === undefined ? null : stockInterface.lastDate)
-    this.setStockCloseInfo(stockInterface === undefined ? null : stockInterface.stockCloseInfo)
-    this.setStockDateInfo(stockInterface === undefined ? null : stockInterface.stockDateInfo)
+
+  buildStockInfoWithInterface(stockInterface: StockInterface) {
+    this.setSymbol(stockInterface.symbol)
+    this.setOpen(stockInterface.open)
+    this.setClose(stockInterface.close)
+    this.setHigh(stockInterface.high)
+    this.setVolume(stockInterface.volume)
+    this.setLastDate(stockInterface.lastDate)
+    this.setStockCloseInfo(stockInterface.stockCloseInfo)
+    this.setStockDateInfo(stockInterface.stockDateInfo)
     this.dataSource = [{
       "symbol": this.symbol ? this.symbol: "",
       "open": this.open ? this.open: 0,
@@ -44,30 +71,40 @@ export class StockGraphicalInterfaceComponent implements OnInit {
       "stockDateInfo": this.stockDateInfo ? this.stockDateInfo: [],
       "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo: [],
     }];
+    return [
+      this.symbol,
+      this.open,
+      this.close,
+      this.high,
+      this.volume,
+      this.lastDate,
+      this.stockDateInfo,
+      this.stockCloseInfo,
+    ]
   }
 
-  public setSymbol(symbol: null | string) {
+  public setSymbol(symbol: string) {
     this.symbol = symbol
   }
-  public setOpen(open: null | number) {
+  public setOpen(open:  number) {
     this.open = open
   }
-  public setClose(close: null | number) {
+  public setClose(close:  number) {
     this.close = close
   }
-  public setHigh(high: null | number) {
+  public setHigh(high: number) {
     this.high = high
   }
-  public setVolume(volume: null | number) {
+  public setVolume(volume: number) {
     this.volume = volume
   }
-  public setLastDate(lastDate: null | string) {
+  public setLastDate(lastDate: string) {
     this.lastDate = lastDate
   }
-  public setStockDateInfo(stockDateInfo: null | string[]) {
+  public setStockDateInfo(stockDateInfo: string[]) {
     this.stockDateInfo = stockDateInfo
   }
-  public setStockCloseInfo(stockCloseInfo: null | number[]) {
+  public setStockCloseInfo(stockCloseInfo: number[]) {
     this.stockCloseInfo = stockCloseInfo
   }
 
