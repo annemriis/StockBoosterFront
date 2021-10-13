@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {WebRequestService} from "../../web-request.service";
 import {TaskService} from "../../task.service";
 import {StockInterface} from "../../Interface/StockInterface";
+import {ChartDataSets, ChartOptions} from "chart.js";
+import {Color, Label} from "ng2-charts";
+import { ChartType} from "chart.js";
 import {StockGraphicalInterfaceComponent} from "../stock-graphical-interface/stock-graphical-interface/stock-graphical-interface.component";
+import {MatTable} from "@angular/material/table";
 
 
 @Component({
@@ -12,6 +16,7 @@ import {StockGraphicalInterfaceComponent} from "../stock-graphical-interface/sto
   styleUrls: ['./stock.component.css']
 })
 export class StockComponent implements OnInit {
+  @ViewChild(MatTable) myTable!: MatTable<any>;
 
   constructor(public http: HttpClient, private  apiService: WebRequestService, private taskService: TaskService) { }
 
@@ -19,22 +24,18 @@ export class StockComponent implements OnInit {
 
   stockInterface: StockInterface | undefined
   stockInformationComponent!: StockGraphicalInterfaceComponent
+  dataSource = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "", "stockDateInfo": [""],
+    "stockCloseInfo": [0]}];
 
 
   getStockData = (symbol: string) => {
     this.hasSubmitted = true;
     console.log("api/stock/" + symbol.toUpperCase())
-    /**
-    this.apiService.getReq("api/stock/" + symbol.toUpperCase()).subscribe(
-      async (res: Response) => this.json = await res.json()
-    );
-     **/
-    console.log(this)
     this.taskService.getStock(symbol.toUpperCase()).subscribe((data) => {
       this.stockInterface = data
-      console.log(this.stockInterface)
-
       this.stockInformationComponent.buildStockInfoWithInterface(this.stockInterface)
+      this.dataSource = this.stockInformationComponent.dataSource
+      this.myTable.renderRows()
     });
 
     if (this.stockInterface === undefined) {
