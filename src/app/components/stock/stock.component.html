@@ -1,5 +1,4 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div class="stock-container" fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="50px">
+<div class="stock-container" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="50px">
   <h2  fxLayout="row" fxLayoutAlign="center center">Here you can search for a specific stock and get its information.</h2>
 
   <div class="search" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
@@ -10,7 +9,7 @@
     <button mat-button (click)="getStockData(symbol.value)">Search</button>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="space-evenly center">
+  <div *ngIf="hasSubmitted" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
     <table mat-table [dataSource]="dataSource" class="dataTable">
 
       <ng-container matColumnDef="symbol">
@@ -49,7 +48,7 @@
 
     <mat-card>
       <mat-card-content>
-        <canvas baseChart width="380" height="120"
+        <canvas baseChart
                 [datasets]="lineChartData"
                 [labels]="lineChartLabels"
                 [options]="lineChartOptions"

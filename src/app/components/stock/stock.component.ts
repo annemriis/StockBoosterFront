@@ -4,7 +4,7 @@ import {WebRequestService} from "../../web-request.service";
 import {TaskService} from "../../task.service";
 import {StockInterface} from "../../Interface/StockInterface";
 import {ChartDataSets, ChartOptions} from "chart.js";
-import {Color, Label} from "ng2-charts";
+import {Color, Label, BaseChartDirective} from "ng2-charts";
 import {ChartType} from "chart.js";
 import {StockGraphicalInterfaceComponent} from "../stock-graphical-interface/stock-graphical-interface/stock-graphical-interface.component";
 import {MatTable} from "@angular/material/table";
@@ -17,6 +17,7 @@ import {MatTable} from "@angular/material/table";
 })
 export class StockComponent implements OnInit {
   @ViewChild(MatTable) myTable!: MatTable<any>;
+  @ViewChild(BaseChartDirective) canvas!: BaseChartDirective;
 
   constructor(public http: HttpClient, private  apiService: WebRequestService, private taskService: TaskService) { }
 
@@ -35,6 +36,11 @@ export class StockComponent implements OnInit {
       this.stockInterface = data
       this.stockInformationComponent.buildStockInfoWithInterface(this.stockInterface)
       this.dataSource = this.stockInformationComponent.dataSource
+      this.lineChartData = [{
+        data: this.stockInterface?.stockCloseInfo === null ? [] : this.stockInterface?.stockCloseInfo,
+        label: "Stock's close info" }]
+      this.lineChartLabels = this.stockInterface.stockDateInfo
+      this.canvas.ngOnChanges({});
       this.myTable.renderRows()
     });
 
@@ -49,7 +55,7 @@ export class StockComponent implements OnInit {
 
   public lineChartData: ChartDataSets[] = [{
     data: this.stockInterface?.stockCloseInfo === null ? [] : this.stockInterface?.stockCloseInfo,
-    label: this.stockInterface?.symbol === null ? "" : this.stockInterface?.symbol }]
+    label: "Stock's close info" }]
 
   lineChartLabels: Label[] = this.stockInterface?.stockDateInfo === null ? [] : this.stockInterface?.stockDateInfo;
 

@@ -3,7 +3,6 @@
   justify-content: center;
   width: 75rem;
   height: 100%;
-  border: 1px solid black;
 }
 
 button {
@@ -27,11 +26,16 @@ mat-form-field {
 }
 
 table {
-  width: 90%
+  width: 50%;
 }
 
 .search {
-  width: 100%
+  width: 100%;
+}
+
+mat-card {
+  height: 85%;
+  width: 40%;
 }
 
 @media only screen and (max-width: 600px) {
