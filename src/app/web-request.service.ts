@@ -29,23 +29,5 @@ export class WebRequestService {
   }
 
 
-  getReq(uri: string): Observable<ObservedValueOf<Promise<Response>>> {
-    return from(
-      fetch(
-        this.url + uri, {
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          method: 'GET',
-          mode: 'no-cors'
-        }
-      )
-    )
-  }
-
-  postRequest() {
-
-  }
-
   // delete jne.
 }
