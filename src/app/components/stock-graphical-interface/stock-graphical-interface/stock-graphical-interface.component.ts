@@ -1,9 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ChartDataSets, ChartOptions} from "chart.js";
-import {Color, Label} from "ng2-charts";
-import {ChartType} from "chart.js";
+import {Component, OnInit} from '@angular/core';
 import {StockInterface} from "../../../Interface/StockInterface";
-import {MatTable} from "@angular/material/table";
 
 
 @Component({
@@ -12,7 +8,6 @@ import {MatTable} from "@angular/material/table";
   styleUrls: ['./stock-graphical-interface.component.css']
 })
 export class StockGraphicalInterfaceComponent implements OnInit {
-  @ViewChild(MatTable) myTable!: MatTable<any>;
 
   constructor() { }
 
@@ -24,35 +19,11 @@ export class StockGraphicalInterfaceComponent implements OnInit {
   lastDate: string | null = null
   stockDateInfo: string[] | null = null
   stockCloseInfo: number[] | null = null
-  dataSource = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "", "stockDateInfo": [""],
-    "stockCloseInfo": [0],
-  }];
+  dataSource = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "", "stockDateInfo": [""], "stockCloseInfo": [0]}];
 
   ngOnInit(): void {
-    console.log("Comp init")
+
   }
-
-  public lineChartData: ChartDataSets[] = [ { data: this.stockCloseInfo === null ? [] : this.stockCloseInfo, label: this.symbol === null ? "" : this.symbol}
-    //{ data: [2801.12,2783.71,2747.08,2723.54,2675.3,2729.25,2665.31,2690.42,2723.68,2830.02,2852.66,2836.53,
-        //2818.77,2792.93,2780.34,2829.27,2887.47,2904.12,2868.12,2869.3,2838.42,2898.27], label: 'Stock close price' }
-  ]
-
-  lineChartLabels: Label[] = this.stockDateInfo === null ? [] : this.stockDateInfo;
-
-  public lineChartOptions: (ChartOptions) = {
-    responsive: true,
-  };
-  public lineChartColors: Color[] = [
-    {
-      borderColor: 'black',
-      backgroundColor: '#80CBC4',
-      borderWidth: 2,
-    },
-  ];
-  public lineChartLegend = true;
-  public lineChartType = 'line' as ChartType
-  public lineChartPlugins = [];
-
 
   buildStockInfoWithInterface(stockInterface: StockInterface | undefined) {
     this.setSymbol(stockInterface === undefined ? null : stockInterface.symbol)

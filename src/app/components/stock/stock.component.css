@@ -7,10 +7,10 @@
 }
 
 button {
-  width: 20%;
-  height: 8%;
+  width: 15%;
   border: none;
   background: none;
+  margin-top: -1.5%;
   box-shadow: 0 1px 3px #80CBC4, 0 1px 2px #B2DFDB;
   border-radius: 40px 40px;
 }
@@ -22,15 +22,16 @@ button:hover {
 }
 
 mat-form-field {
-  width: 60%;
-  margin-top: 5%;
-  padding: 1%;
-  height: 8%;
+  width: 30%;
   border-radius: 40px 40px;
 }
 
-app-stock-graphical-interface {
+table {
   width: 90%
+}
+
+.search {
+  width: 100%
 }
 
 @media only screen and (max-width: 600px) {

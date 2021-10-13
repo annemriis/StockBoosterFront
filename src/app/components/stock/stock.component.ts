@@ -5,7 +5,7 @@ import {TaskService} from "../../task.service";
 import {StockInterface} from "../../Interface/StockInterface";
 import {ChartDataSets, ChartOptions} from "chart.js";
 import {Color, Label} from "ng2-charts";
-import { ChartType} from "chart.js";
+import {ChartType} from "chart.js";
 import {StockGraphicalInterfaceComponent} from "../stock-graphical-interface/stock-graphical-interface/stock-graphical-interface.component";
 import {MatTable} from "@angular/material/table";
 
@@ -22,7 +22,7 @@ export class StockComponent implements OnInit {
 
   hasSubmitted: boolean = false;
 
-  stockInterface: StockInterface | undefined
+  stockInterface!: StockInterface
   stockInformationComponent!: StockGraphicalInterfaceComponent
   dataSource = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "", "stockDateInfo": [""],
     "stockCloseInfo": [0]}];
@@ -45,9 +45,18 @@ export class StockComponent implements OnInit {
 
   ngOnInit(): void {
     this.stockInformationComponent = new StockGraphicalInterfaceComponent()
-    console.log("New object")
   }
 
+  public lineChartData: ChartDataSets[] = [{
+    data: this.stockInterface?.stockCloseInfo === null ? [] : this.stockInterface?.stockCloseInfo,
+    label: this.stockInterface?.symbol === null ? "" : this.stockInterface?.symbol }]
+
+  lineChartLabels: Label[] = this.stockInterface?.stockDateInfo === null ? [] : this.stockInterface?.stockDateInfo;
+
+  public lineChartOptions: (ChartOptions) = { responsive: true};
+  public lineChartColors: Color[] = [{ borderColor: 'black', backgroundColor: '#80CBC4', borderWidth: 2 }];
+  public lineChartLegend = true;
+  public lineChartType = 'line' as ChartType
+  public lineChartPlugins = [];
 
 }
-
