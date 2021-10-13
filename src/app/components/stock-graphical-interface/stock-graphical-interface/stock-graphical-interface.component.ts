@@ -9,6 +9,8 @@ import {
   SimpleChanges
 } from '@angular/core';
 import {StockInterface} from "../../../Interface/StockInterface";
+import {ChartDataSets, ChartOptions, ChartType} from "chart.js";
+import {Color, Label} from "ng2-charts";
 
 
 @Component({
@@ -26,7 +28,16 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
   @Input() lastDate: string
   @Input() stockDateInfo: string[]
   @Input() stockCloseInfo: number[]
-  @Input() dataSource = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "", "stockDateInfo": [""], "stockCloseInfo": [0]}];
+  @Input() dataSource = [{
+    "symbol": "",
+    "open": 0,
+    "close": 0,
+    "high": 0,
+    "volume": 0,
+    "lastDate": "",
+    "stockDateInfo": [""],
+    "stockCloseInfo": [0]
+  }];
 
 
   constructor() {
@@ -43,7 +54,7 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
 
 
   ngOnChanges(changes: SimpleChanges) {
-     // here you will get the data from parent once the input param is change
+    // here you will get the data from parent once the input param is change
     console.log(this.symbol)
   }
 
@@ -62,14 +73,14 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
     this.setStockCloseInfo(stockInterface.stockCloseInfo)
     this.setStockDateInfo(stockInterface.stockDateInfo)
     this.dataSource = [{
-      "symbol": this.symbol ? this.symbol: "",
-      "open": this.open ? this.open: 0,
-      "close": this.close ? this.close: 0,
-      "high": this.high ? this.high: 0,
-      "volume": this.volume ? this.volume: 0,
-      "lastDate": this.lastDate ? this.lastDate: "",
-      "stockDateInfo": this.stockDateInfo ? this.stockDateInfo: [],
-      "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo: [],
+      "symbol": this.symbol ? this.symbol : "",
+      "open": this.open ? this.open : 0,
+      "close": this.close ? this.close : 0,
+      "high": this.high ? this.high : 0,
+      "volume": this.volume ? this.volume : 0,
+      "lastDate": this.lastDate ? this.lastDate : "",
+      "stockDateInfo": this.stockDateInfo ? this.stockDateInfo : [],
+      "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],
     }];
     return [
       this.symbol,
@@ -86,26 +97,34 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
   public setSymbol(symbol: string) {
     this.symbol = symbol
   }
-  public setOpen(open:  number) {
+
+  public setOpen(open: number) {
     this.open = open
   }
-  public setClose(close:  number) {
+
+  public setClose(close: number) {
     this.close = close
   }
+
   public setHigh(high: number) {
     this.high = high
   }
+
   public setVolume(volume: number) {
     this.volume = volume
   }
+
   public setLastDate(lastDate: string) {
     this.lastDate = lastDate
   }
+
   public setStockDateInfo(stockDateInfo: string[]) {
     this.stockDateInfo = stockDateInfo
   }
+
   public setStockCloseInfo(stockCloseInfo: number[]) {
     this.stockCloseInfo = stockCloseInfo
   }
+
 
 }
