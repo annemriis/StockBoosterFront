@@ -9,12 +9,16 @@
     <button mat-button (click)="getStockData(symbol.value)">Search</button>
   </div>
 
-
-
   <app-stock-graphical-interface *ngIf="hasSubmitted"
-    [symbol]="stockInformationComponent.symbol"
-                                 [open]="stockInformationComponent.open"
-                                 [high]="stockInformationComponent.high"
+                                 [symbol]="stockGUIService.symbol"
+                                 [open]="stockGUIService.open"
+                                 [high]="stockGUIService.high"
+                                 [close]="stockGUIService.close"
+                                 [volume]="stockGUIService.volume"
+                                 [lastDate]="stockGUIService.lastDate"
+                                 [stockDateInfo]="stockGUIService.stockDateInfo"
+                                 [stockCloseInfo]="stockGUIService.stockCloseInfo"
+                                 [dataSource]="stockGUIService.dataSource"
   ></app-stock-graphical-interface>
 
 

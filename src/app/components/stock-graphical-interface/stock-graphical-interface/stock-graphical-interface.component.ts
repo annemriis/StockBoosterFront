@@ -11,6 +11,7 @@ import {
 import {StockInterface} from "../../../Interface/StockInterface";
 import {ChartDataSets, ChartOptions, ChartType} from "chart.js";
 import {Color, Label} from "ng2-charts";
+import {StockGuiServiceService} from "./stock-gui-service.service";
 
 
 @Component({
@@ -40,7 +41,7 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
   }];
 
 
-  constructor() {
+  constructor(private changer: ChangeDetectorRef, private guiService: StockGuiServiceService) {
     this.symbol = ''
     this.open = 1
     this.close = 1
@@ -50,49 +51,15 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
     this.stockDateInfo = []
     this.stockCloseInfo = []
     this.dataSource = []
-  }
-
-
-  ngOnChanges(changes: SimpleChanges) {
-    // here you will get the data from parent once the input param is change
-    console.log(this.symbol)
+    setInterval(() => {
+      this.changer.detectChanges();
+    }, 1000);
   }
 
   ngOnInit(): void {
 
   }
 
-
-  buildStockInfoWithInterface(stockInterface: StockInterface) {
-    this.setSymbol(stockInterface.symbol)
-    this.setOpen(stockInterface.open)
-    this.setClose(stockInterface.close)
-    this.setHigh(stockInterface.high)
-    this.setVolume(stockInterface.volume)
-    this.setLastDate(stockInterface.lastDate)
-    this.setStockCloseInfo(stockInterface.stockCloseInfo)
-    this.setStockDateInfo(stockInterface.stockDateInfo)
-    this.dataSource = [{
-      "symbol": this.symbol ? this.symbol : "",
-      "open": this.open ? this.open : 0,
-      "close": this.close ? this.close : 0,
-      "high": this.high ? this.high : 0,
-      "volume": this.volume ? this.volume : 0,
-      "lastDate": this.lastDate ? this.lastDate : "",
-      "stockDateInfo": this.stockDateInfo ? this.stockDateInfo : [],
-      "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],
-    }];
-    return [
-      this.symbol,
-      this.open,
-      this.close,
-      this.high,
-      this.volume,
-      this.lastDate,
-      this.stockDateInfo,
-      this.stockCloseInfo,
-    ]
-  }
 
   public setSymbol(symbol: string) {
     this.symbol = symbol
@@ -126,5 +93,7 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
     this.stockCloseInfo = stockCloseInfo
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+  }
 
 }
