@@ -1,16 +1,6 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges
-} from '@angular/core';
-import {StockInterface} from "../../../Interface/StockInterface";
+import {ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {ChartDataSets, ChartOptions, ChartType} from "chart.js";
-import {Color, Label} from "ng2-charts";
+import {BaseChartDirective, Color, Label} from "ng2-charts";
 import {StockGuiServiceService} from "./stock-gui-service.service";
 
 
@@ -20,7 +10,7 @@ import {StockGuiServiceService} from "./stock-gui-service.service";
   styleUrls: ['./stock-graphical-interface.component.css']
 })
 export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
-
+  @ViewChild(BaseChartDirective) canvas!: BaseChartDirective
   @Input() symbol: string
   @Input() open: number
   @Input() close: number
@@ -40,7 +30,6 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
     "stockCloseInfo": [0]
   }];
 
-
   constructor(private changer: ChangeDetectorRef, private guiService: StockGuiServiceService) {
     this.symbol = ''
     this.open = 1
@@ -51,6 +40,10 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
     this.stockDateInfo = []
     this.stockCloseInfo = []
     this.dataSource = []
+    this.lineChartData = [{
+      data: this.guiService.stockCloseInfo === null ? [] : this.guiService.stockCloseInfo,
+      label: "Stock's close info" }]
+    this.lineChartLabels = this.guiService.stockDateInfo
     setInterval(() => {
       this.changer.detectChanges();
     }, 1000);
@@ -60,40 +53,20 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
 
   }
 
-
-  public setSymbol(symbol: string) {
-    this.symbol = symbol
-  }
-
-  public setOpen(open: number) {
-    this.open = open
-  }
-
-  public setClose(close: number) {
-    this.close = close
-  }
-
-  public setHigh(high: number) {
-    this.high = high
-  }
-
-  public setVolume(volume: number) {
-    this.volume = volume
-  }
-
-  public setLastDate(lastDate: string) {
-    this.lastDate = lastDate
-  }
-
-  public setStockDateInfo(stockDateInfo: string[]) {
-    this.stockDateInfo = stockDateInfo
-  }
-
-  public setStockCloseInfo(stockCloseInfo: number[]) {
-    this.stockCloseInfo = stockCloseInfo
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
+
   }
+
+  public lineChartData: ChartDataSets[] = [{
+    data: this.guiService.stockCloseInfo === null ? [] : this.guiService.stockCloseInfo,
+    label: "Stock's close info" }]
+
+  lineChartLabels: Label[] = this.guiService.stockDateInfo === null ? [] : this.guiService.stockDateInfo;
+
+  public lineChartOptions: (ChartOptions) = { responsive: true};
+  public lineChartColors: Color[] = [{ borderColor: 'black', backgroundColor: '#80CBC4', borderWidth: 2 }];
+  public lineChartLegend = true;
+  public lineChartType = 'line' as ChartType
+  public lineChartPlugins = [];
 
 }

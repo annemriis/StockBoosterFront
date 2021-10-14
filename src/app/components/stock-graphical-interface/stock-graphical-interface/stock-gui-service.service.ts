@@ -38,12 +38,6 @@ export class StockGuiServiceService {
     this.dataSource = []
   }
 
-
-  ngOnInit(): void {
-
-  }
-
-
   buildStockInfoWithInterface(stockInterface: StockInterface) {
     this.setSymbol(stockInterface.symbol)
     this.setOpen(stockInterface.open)
@@ -66,10 +60,6 @@ export class StockGuiServiceService {
     this.isBuilding();
     return this;
   }
-
-
-
-
 
   isBuilding() {
     return this;

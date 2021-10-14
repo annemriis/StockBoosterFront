@@ -1,8 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {StockGraphicalInterfaceComponent} from "../stock-graphical-interface/stock-graphical-interface/stock-graphical-interface.component";
-import {ChartDataSets, ChartOptions, ChartType} from "chart.js";
-import {BaseChartDirective, Color, Label} from "ng2-charts";
-import {HttpClient} from "@angular/common/http";
+import {BaseChartDirective} from "ng2-charts";
 import {WebRequestService} from "../../web-request.service";
 import {TaskService} from "../../task.service";
 import {StockInterface} from "../../Interface/StockInterface";
@@ -32,12 +29,12 @@ export class MoraleComponent implements OnInit {
 
 
   getStockData = (symbol: string) => {
-    this.hasSubmitted = true;
     console.log("api/stock/" + symbol.toUpperCase())
     this.taskService.getStock(symbol.toUpperCase()).subscribe((data) => {
       this.stockInterface = data
       this.stockGUIService.buildStockInfoWithInterface(data)
       this.dataSource = this.stockGUIService.dataSource
+      this.hasSubmitted = true;
       this.canvas.ngOnChanges({});
       this.myTable.renderRows()
     });
@@ -45,7 +42,5 @@ export class MoraleComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
 
 }

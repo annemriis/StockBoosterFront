@@ -37,10 +37,6 @@ export class StockComponent implements OnInit {
       this.stockInterface = data
       this.stockGUIService.buildStockInfoWithInterface(this.stockInterface)
       this.dataSource = this.stockGUIService.dataSource
-      this.lineChartData = [{
-        data: this.stockInterface?.stockCloseInfo === null ? [] : this.stockInterface?.stockCloseInfo,
-        label: "Stock's close info" }]
-      this.lineChartLabels = this.stockInterface.stockDateInfo
       this.canvas.ngOnChanges({});
       this.myTable.renderRows()
     });
@@ -52,17 +48,5 @@ export class StockComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  public lineChartData: ChartDataSets[] = [{
-    data: this.stockInterface?.stockCloseInfo === null ? [] : this.stockInterface?.stockCloseInfo,
-    label: "Stock's close info" }]
-
-  lineChartLabels: Label[] = this.stockInterface?.stockDateInfo === null ? [] : this.stockInterface?.stockDateInfo;
-
-  public lineChartOptions: (ChartOptions) = { responsive: true};
-  public lineChartColors: Color[] = [{ borderColor: 'black', backgroundColor: '#80CBC4', borderWidth: 2 }];
-  public lineChartLegend = true;
-  public lineChartType = 'line' as ChartType
-  public lineChartPlugins = [];
 
 }
