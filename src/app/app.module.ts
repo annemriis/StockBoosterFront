@@ -16,6 +16,7 @@ import { StockComponent } from './components/stock/stock.component';
 import { MoraleComponent } from './components/morale/morale.component';
 import { HttpClientModule} from "@angular/common/http";
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import {FooterComponent} from "./components/footer/footer.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -28,6 +29,7 @@ import { CompareStockComponent } from './components/compare-stock/compare-stock.
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,8 +38,9 @@ import { CompareStockComponent } from './components/compare-stock/compare-stock.
     StockComponent,
     MoraleComponent,
     AboutUsComponent,
+    CompareStockComponent,
     StockGraphicalInterfaceComponent,
-    CompareStockComponent
+    FooterComponent
   ],
   imports: [
     BrowserModule,
