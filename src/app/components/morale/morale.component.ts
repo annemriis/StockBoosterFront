@@ -24,13 +24,13 @@ export class MoraleComponent implements OnInit {
 
 
   getStockData = (symbol: string) => {
-    console.log("api/stock/" + symbol.toUpperCase())
     this.taskService.getStock(symbol.toUpperCase()).subscribe((data) => {
       this.stockInterface = data
       this.stockGUIService.buildStockInfoWithInterface(data)
       this.dataSource = this.stockGUIService.dataSource
       this.hasSubmitted = true;
     });
+    // Need to implement something for the case where the given stock symbol doesn't exist
   }
 
   ngOnInit(): void {
