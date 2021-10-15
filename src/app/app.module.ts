@@ -37,8 +37,8 @@ import { StockGraphicalInterfaceComponent } from './components/stock-graphical-i
     StockComponent,
     MoraleComponent,
     AboutUsComponent,
-    FooterComponent,
     StockGraphicalInterfaceComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
