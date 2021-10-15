@@ -9,56 +9,18 @@
     <button mat-button (click)="getStockData(symbol.value)">Search</button>
   </div>
 
-  <div *ngIf="hasSubmitted" fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="15px">
-    <table mat-table [dataSource]="dataSource" class="dataTable">
-
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="open">
-        <th mat-header-cell *matHeaderCellDef> Open </th>
-        <td mat-cell *matCellDef="let element"> {{element.open}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="close">
-        <th mat-header-cell *matHeaderCellDef> Close </th>
-        <td mat-cell *matCellDef="let element"> {{element.close}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="high">
-        <th mat-header-cell *matHeaderCellDef> High </th>
-        <td mat-cell *matCellDef="let element"> {{element.high}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="volume">
-        <th mat-header-cell *matHeaderCellDef> Volume </th>
-        <td mat-cell *matCellDef="let element"> {{element.volume}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="lastDate">
-        <th mat-header-cell *matHeaderCellDef> Last Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.lastDate}} </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="['symbol', 'open', 'close', 'high', 'volume', 'lastDate']"></tr>
-      <tr mat-row *matRowDef="let row; columns: ['symbol', 'open', 'close', 'high', 'volume', 'lastDate'];"></tr>
-    </table>
-
-    <!--mat-card>
-      <mat-card-content>
-        <canvas baseChart
-                [datasets]="lineChartData"
-                [labels]="lineChartLabels"
-                [options]="lineChartOptions"
-                [colors]="lineChartColors"
-                [legend]="lineChartLegend"
-                [chartType]=lineChartType
-                [plugins]="lineChartPlugins">
-        </canvas>
-      </mat-card-content>
-    </mat-card-->
-  </div>
+  <app-stock-graphical-interface *ngIf="hasSubmitted"
+                                 [symbol]="stockGUIService.symbol"
+                                 [open]="stockGUIService.open"
+                                 [high]="stockGUIService.high"
+                                 [close]="stockGUIService.close"
+                                 [volume]="stockGUIService.volume"
+                                 [lastDate]="stockGUIService.lastDate"
+                                 [stockDateInfo]="stockGUIService.stockDateInfo"
+                                 [stockCloseInfo]="stockGUIService.stockCloseInfo"
+                                 [dataSource]="stockGUIService.dataSource"
+                                 [lineChartData]="stockGUIService.lineChartData"
+                                 [lineChartLabels]="stockGUIService.lineChartLabels">
+  </app-stock-graphical-interface>
 
 </div>
