@@ -16,6 +16,7 @@ import { StockComponent } from './components/stock/stock.component';
 import { MoraleComponent } from './components/morale/morale.component';
 import { HttpClientModule} from "@angular/common/http";
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import {FooterComponent} from "./components/footer/footer.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -27,6 +28,7 @@ import { StockGraphicalInterfaceComponent } from './components/stock-graphical-i
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,8 @@ import { StockGraphicalInterfaceComponent } from './components/stock-graphical-i
     StockComponent,
     MoraleComponent,
     AboutUsComponent,
-    StockGraphicalInterfaceComponent
+    FooterComponent,
+    StockGraphicalInterfaceComponent,
   ],
   imports: [
     BrowserModule,
