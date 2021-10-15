@@ -1,9 +1,10 @@
-import {ChangeDetectorRef, Injectable, Input, SimpleChanges} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {StockInterface} from "../../../Interface/StockInterface";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class StockGuiServiceService {
 
   symbol: string
@@ -14,16 +15,10 @@ export class StockGuiServiceService {
   lastDate: string
   stockDateInfo: string[]
   stockCloseInfo: number[]
-  dataSource = [{
-    "symbol": "",
-    "open": 0,
-    "close": 0,
-    "high": 0,
-    "volume": 0,
-    "lastDate": "",
-    "stockDateInfo": [""],
-    "stockCloseInfo": [0]
-  }];
+  dataSource = [{"symbol": "", "open": 0, "close": 0, "high": 0, "volume": 0, "lastDate": "", "stockDateInfo": [""],
+    "stockCloseInfo": [0]}];
+  lineChartData: [{data: number[], label: string}]
+  lineChartLabels: string[]
 
 
   constructor() {
@@ -36,13 +31,9 @@ export class StockGuiServiceService {
     this.stockDateInfo = []
     this.stockCloseInfo = []
     this.dataSource = []
+    this.lineChartData = [{data: [0], label: "Stock's close info" }]
+    this.lineChartLabels = []
   }
-
-
-  ngOnInit(): void {
-
-  }
-
 
   buildStockInfoWithInterface(stockInterface: StockInterface) {
     this.setSymbol(stockInterface.symbol)
@@ -63,13 +54,11 @@ export class StockGuiServiceService {
       "stockDateInfo": this.stockDateInfo ? this.stockDateInfo : [],
       "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],
     }];
+    this.lineChartData = [{data: this.stockCloseInfo, label: "Stock's close info" }]
+    this.lineChartLabels = this.stockDateInfo
     this.isBuilding();
     return this;
   }
-
-
-
-
 
   isBuilding() {
     return this;

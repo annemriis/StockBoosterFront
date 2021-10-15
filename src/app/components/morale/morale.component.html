@@ -1,5 +1,5 @@
 <div class="stock-container" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="50px">
-  <h2  fxLayout="row" fxLayoutAlign="center center">Here you can search for a specific stock and get its information.</h2>
+  <h2  fxLayout="row" fxLayoutAlign="center center">Here you can search for a specific stock and you will be displayed a worse performing stock to boost your morale.</h2>
 
   <div class="search" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
     <mat-form-field color="primary" appearance="outline">
@@ -19,9 +19,8 @@
                                  [stockDateInfo]="stockGUIService.stockDateInfo"
                                  [stockCloseInfo]="stockGUIService.stockCloseInfo"
                                  [dataSource]="stockGUIService.dataSource"
-  ></app-stock-graphical-interface>
-
+                                 [lineChartData]="stockGUIService.lineChartData"
+                                 [lineChartLabels]="stockGUIService.lineChartLabels">
+  </app-stock-graphical-interface>
 
 </div>
-
-

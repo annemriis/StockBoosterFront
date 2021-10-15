@@ -1,6 +1,7 @@
 .stock-container {
   display: flex;
   justify-content: center;
+  align-self: flex-start;
   width: 75rem;
   height: 100%;
 }
@@ -9,7 +10,7 @@ button {
   width: 15%;
   border: none;
   background: none;
-  margin-top: -1.5%;
+  margin-top: -2.5%;
   box-shadow: 0 1px 3px #80CBC4, 0 1px 2px #B2DFDB;
   border-radius: 40px 40px;
 }
@@ -23,19 +24,15 @@ button:hover {
 mat-form-field {
   width: 30%;
   border-radius: 40px 40px;
+  margin-top: -1%;
 }
 
-table {
-  width: 50%;
+app-stock-graphical-interface {
+  margin-top: -3%;
 }
 
 .search {
   width: 100%;
-}
-
-mat-card {
-  height: 85%;
-  width: 40%;
 }
 
 @media only screen and (max-width: 600px) {

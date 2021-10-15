@@ -1,69 +1,42 @@
 <div class="stock-container" fxLayout="column" fxLayoutAlign="space-evenly center">
 
-
-
-    <!-- Toimib -->
-    <ng-container matColumnDef="symbol">
-      <div>{{symbol}}</div>
-      <div>{{high}}</div>
-      <div>{{open}}</div></ng-container>
-
-
-
   <table mat-table [dataSource]="dataSource" class="dataTable">
 
-    <!-- Symbol Column -->
     <ng-container matColumnDef="symbol">
       <th mat-header-cell *matHeaderCellDef> Symbol </th>
       <td mat-cell *matCellDef="let element"> {{symbol}} </td>
-      <div>{{symbol}}</div>
     </ng-container>
 
-    <!-- Open Column -->
     <ng-container matColumnDef="open">
       <th mat-header-cell *matHeaderCellDef> Open </th>
       <td mat-cell *matCellDef="let element"> {{open}} </td>
-      <div>{{open}}</div>
-
     </ng-container>
 
-    <!-- Close Column -->
     <ng-container matColumnDef="close">
       <th mat-header-cell *matHeaderCellDef> Close </th>
       <td mat-cell *matCellDef="let element"> {{close}} </td>
-      <div>{{close}}</div>
-
     </ng-container>
 
-    <!-- High Column -->
     <ng-container matColumnDef="high">
       <th mat-header-cell *matHeaderCellDef> High </th>
       <td mat-cell *matCellDef="let element"> {{high}} </td>
-      <div>{{high}}</div>
-
     </ng-container>
 
-    <!-- Volume Column -->
     <ng-container matColumnDef="volume">
       <th mat-header-cell *matHeaderCellDef> Volume </th>
       <td mat-cell *matCellDef="let element"> {{volume}} </td>
-      <div>{{volume}}</div>
-
     </ng-container>
 
-    <!-- Last Date Column -->
     <ng-container matColumnDef="lastDate">
       <th mat-header-cell *matHeaderCellDef> Last Date </th>
       <td mat-cell *matCellDef="let element"> {{lastDate}} </td>
-      <div>{{lastDate}}</div>
-
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="['symbol', 'open', 'close', 'high', 'volume', 'lastDate']"></tr>
     <tr mat-row *matRowDef="let row; columns: ['symbol', 'open', 'close', 'high', 'volume', 'lastDate'];"></tr>
   </table>
 
-  <!--mat-card>
+  <mat-card>
     <mat-card-content>
       <canvas baseChart width="380" height="120"
               [datasets]="lineChartData"
@@ -75,5 +48,5 @@
               [plugins]="lineChartPlugins">
       </canvas>
     </mat-card-content>
-  </mat-card-->
+  </mat-card>
 </div>
