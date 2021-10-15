@@ -1,9 +1,7 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {BaseChartDirective} from "ng2-charts";
+import {Component, OnInit} from '@angular/core';
 import {WebRequestService} from "../../web-request.service";
 import {TaskService} from "../../task.service";
 import {StockInterface} from "../../Interface/StockInterface";
-import {MatTable} from "@angular/material/table";
 import {StockGuiServiceService} from "../stock-graphical-interface/stock-graphical-interface/stock-gui-service.service";
 
 @Component({
@@ -12,9 +10,6 @@ import {StockGuiServiceService} from "../stock-graphical-interface/stock-graphic
   styleUrls: ['./morale.component.css']
 })
 export class MoraleComponent implements OnInit {
-  @ViewChild(MatTable) myTable!: MatTable<any>;
-  @ViewChild(BaseChartDirective) canvas!: BaseChartDirective;
-
 
   constructor(
     private  apiService: WebRequestService,
@@ -35,8 +30,6 @@ export class MoraleComponent implements OnInit {
       this.stockGUIService.buildStockInfoWithInterface(data)
       this.dataSource = this.stockGUIService.dataSource
       this.hasSubmitted = true;
-      //this.canvas.ngOnChanges({});
-      this.myTable.renderRows()
     });
   }
 

@@ -1,10 +1,10 @@
-import {ChangeDetectorRef, Injectable, Input, SimpleChanges} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {StockInterface} from "../../../Interface/StockInterface";
-import {ChartDataSets} from "chart.js";
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class StockGuiServiceService {
 
   symbol: string
@@ -16,10 +16,9 @@ export class StockGuiServiceService {
   stockDateInfo: string[]
   stockCloseInfo: number[]
   dataSource = [{"symbol": "", "open": 0, "close": 0, "high": 0, "volume": 0, "lastDate": "", "stockDateInfo": [""],
-    "stockCloseInfo": [0]
-  }];
+    "stockCloseInfo": [0]}];
   lineChartData: [{data: number[], label: string}]
-  lineChartLabels = [""]
+  lineChartLabels: string[]
 
 
   constructor() {

@@ -1,6 +1,6 @@
-import {ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
-import {ChartDataSets, ChartOptions, ChartType} from "chart.js";
-import {BaseChartDirective, Color, Label} from "ng2-charts";
+import {ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {ChartOptions, ChartType} from "chart.js";
+import {Color, Label} from "ng2-charts";
 import {StockGuiServiceService} from "./stock-gui-service.service";
 
 
@@ -10,7 +10,6 @@ import {StockGuiServiceService} from "./stock-gui-service.service";
   styleUrls: ['./stock-graphical-interface.component.css']
 })
 export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
-  @ViewChild(BaseChartDirective) canvas!: BaseChartDirective
   @Input() symbol: string
   @Input() open: number
   @Input() close: number
@@ -23,6 +22,12 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
     "stockCloseInfo": [0]}];
   @Input() lineChartData: [{data: number[], label: string}]
   @Input() lineChartLabels: Label[]
+
+  public lineChartOptions: (ChartOptions) = {responsive: true};
+  public lineChartColors: Color[] = [{borderColor: 'black', backgroundColor: '#80CBC4', borderWidth: 2}];
+  public lineChartLegend = true;
+  public lineChartType = 'line' as ChartType
+  public lineChartPlugins = [];
 
   constructor(private changer: ChangeDetectorRef, private guiService: StockGuiServiceService) {
     this.symbol = ''
@@ -46,11 +51,5 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
 
   }
-
-  public lineChartOptions: (ChartOptions) = { responsive: true};
-  public lineChartColors: Color[] = [{ borderColor: 'black', backgroundColor: '#80CBC4', borderWidth: 2 }];
-  public lineChartLegend = true;
-  public lineChartType = 'line' as ChartType
-  public lineChartPlugins = [];
 
 }
