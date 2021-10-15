@@ -35,7 +35,7 @@ export class MoraleComponent implements OnInit {
       this.stockGUIService.buildStockInfoWithInterface(data)
       this.dataSource = this.stockGUIService.dataSource
       this.hasSubmitted = true;
-      this.canvas.ngOnChanges({});
+      //this.canvas.ngOnChanges({});
       this.myTable.renderRows()
     });
   }

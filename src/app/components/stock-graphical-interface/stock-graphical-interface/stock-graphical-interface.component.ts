@@ -19,16 +19,10 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
   @Input() lastDate: string
   @Input() stockDateInfo: string[]
   @Input() stockCloseInfo: number[]
-  @Input() dataSource = [{
-    "symbol": "",
-    "open": 0,
-    "close": 0,
-    "high": 0,
-    "volume": 0,
-    "lastDate": "",
-    "stockDateInfo": [""],
-    "stockCloseInfo": [0]
-  }];
+  @Input() dataSource = [{"symbol": "", "open": 0, "close": 0, "high": 0, "volume": 0, "lastDate": "", "stockDateInfo": [""],
+    "stockCloseInfo": [0]}];
+  @Input() lineChartData: [{data: number[], label: string}]
+  @Input() lineChartLabels: Label[]
 
   constructor(private changer: ChangeDetectorRef, private guiService: StockGuiServiceService) {
     this.symbol = ''
@@ -40,13 +34,9 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
     this.stockDateInfo = []
     this.stockCloseInfo = []
     this.dataSource = []
-    this.lineChartData = [{
-      data: this.guiService.stockCloseInfo === null ? [] : this.guiService.stockCloseInfo,
-      label: "Stock's close info" }]
-    this.lineChartLabels = this.guiService.stockDateInfo
-    setInterval(() => {
-      this.changer.detectChanges();
-    }, 1000);
+    this.lineChartData = [{data: [0], label: "Stock's close info" }]
+    this.lineChartLabels = []
+    setInterval(() => {this.changer.detectChanges();}, 1000);
   }
 
   ngOnInit(): void {
@@ -56,12 +46,6 @@ export class StockGraphicalInterfaceComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
 
   }
-
-  public lineChartData: ChartDataSets[] = [{
-    data: this.guiService.stockCloseInfo === null ? [] : this.guiService.stockCloseInfo,
-    label: "Stock's close info" }]
-
-  lineChartLabels: Label[] = this.guiService.stockDateInfo === null ? [] : this.guiService.stockDateInfo;
 
   public lineChartOptions: (ChartOptions) = { responsive: true};
   public lineChartColors: Color[] = [{ borderColor: 'black', backgroundColor: '#80CBC4', borderWidth: 2 }];
