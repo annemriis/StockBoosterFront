@@ -24,6 +24,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatTableModule} from "@angular/material/table";
 import { ChartsModule } from 'ng2-charts';
 import { StockGraphicalInterfaceComponent } from './components/stock-graphical-interface/stock-graphical-interface/stock-graphical-interface.component';
+import { CompareStockComponent } from './components/compare-stock/compare-stock.component';
 
 
 
@@ -35,7 +36,8 @@ import { StockGraphicalInterfaceComponent } from './components/stock-graphical-i
     StockComponent,
     MoraleComponent,
     AboutUsComponent,
-    StockGraphicalInterfaceComponent
+    StockGraphicalInterfaceComponent,
+    CompareStockComponent
   ],
   imports: [
     BrowserModule,
