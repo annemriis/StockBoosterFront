@@ -31,6 +31,7 @@ export class AppLayoutComponent implements OnInit {
     "stockCloseInfo": [0]}];
   dataSourceDOW = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "", "stockDateInfo": [""],
     "stockCloseInfo": [0]}];
+  dataSource = [{}];
 
 
   getData = (string: String) => {
@@ -54,7 +55,7 @@ export class AppLayoutComponent implements OnInit {
   }
 
   getDOWData = () => {
-    this.taskService.getStock("SPY").subscribe((data) => {
+    this.taskService.getStock("NDAQ").subscribe((data) => {
       this.stockInterface = data
       this.stockGUIDOW = JSON.parse(JSON.stringify(this.stockGUIService.buildStockInfoWithInterface(this.stockInterface)))
       console.log(this.dataSourceDOW)

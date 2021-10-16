@@ -1,34 +1,37 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="layout-container" fxLayout="column" fxLayoutAlign="space-between center">
 
-<div class="layout-container" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="30px">
+  <div class="spy-info">
+    <app-stock-graphical-interface
+      *ngIf="hasSubmitted"
+      [symbol]="stockGUISPY.symbol"
+      [open]="stockGUISPY.open"
+      [high]="stockGUISPY.high"
+      [close]="stockGUISPY.close"
+      [volume]="stockGUISPY.volume"
+      [lastDate]="stockGUISPY.lastDate"
+      [stockDateInfo]="stockGUISPY.stockDateInfo"
+      [stockCloseInfo]="stockGUISPY.stockCloseInfo"
+      [dataSource]="stockGUISPY.dataSource"
+      [lineChartData]="stockGUISPY.lineChartData"
+      [lineChartLabels]="stockGUISPY.lineChartLabels"
+    ></app-stock-graphical-interface>
+  </div>
 
-  <app-stock-graphical-interface class="spy-info"
-    *ngIf="hasSubmitted"
-    [symbol]="stockGUISPY.symbol"
-    [open]="stockGUISPY.open"
-    [high]="stockGUISPY.high"
-    [close]="stockGUISPY.close"
-    [volume]="stockGUISPY.volume"
-    [lastDate]="stockGUISPY.lastDate"
-    [stockDateInfo]="stockGUISPY.stockDateInfo"
-    [stockCloseInfo]="stockGUISPY.stockCloseInfo"
-    [dataSource]="stockGUISPY.dataSource"
-    [lineChartData]="stockGUISPY.lineChartData"
-    [lineChartLabels]="stockGUISPY.lineChartLabels"
-  ></app-stock-graphical-interface>
-  <app-stock-graphical-interface class="dow-info"
-    *ngIf="hasSubmitted"
-    [symbol]="stockGUIDOW.symbol"
-    [open]="stockGUIDOW.open"
-    [high]="stockGUIDOW.high"
-    [close]="stockGUIDOW.close"
-    [volume]="stockGUIDOW.volume"
-    [lastDate]="stockGUIDOW.lastDate"
-    [stockDateInfo]="stockGUIDOW.stockDateInfo"
-    [stockCloseInfo]="stockGUIDOW.stockCloseInfo"
-    [dataSource]="stockGUIDOW.dataSource"
-    [lineChartData]="stockGUIDOW.lineChartData"
-    [lineChartLabels]="stockGUIDOW.lineChartLabels"
-  ></app-stock-graphical-interface>
+  <div class="dow-info">
+    <app-stock-graphical-interface class="dow-info"
+      *ngIf="hasSubmitted"
+      [symbol]="stockGUIDOW.symbol"
+      [open]="stockGUIDOW.open"
+      [high]="stockGUIDOW.high"
+      [close]="stockGUIDOW.close"
+      [volume]="stockGUIDOW.volume"
+      [lastDate]="stockGUIDOW.lastDate"
+      [stockDateInfo]="stockGUIDOW.stockDateInfo"
+      [stockCloseInfo]="stockGUIDOW.stockCloseInfo"
+      [dataSource]="stockGUIDOW.dataSource"
+      [lineChartData]="stockGUIDOW.lineChartData"
+      [lineChartLabels]="stockGUIDOW.lineChartLabels"
+    ></app-stock-graphical-interface>
+  </div>
 
 </div>
