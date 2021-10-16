@@ -9,9 +9,10 @@
 
   - Markus Talvik
 
-## How to get the application running
+## How to run locally
 
-  - Run `npm i` to install all necessary dependencies
-  - Run `ng serve` to serve our application
+  - Make sure you have Node.js (latest) and npm
+  - cd to project root
+  - Run `npm i` to install npm modules
+  - Run `ng serve` to start front-end
   - Navigate to `http://localhost:4200/`
-  - Enjoy!
