@@ -7,5 +7,10 @@ export interface StockInterface {
   volume: number,
   lastDate: string,
   stockDateInfo: string[],
-  stockCloseInfo: number[]
+  stockCloseInfo: number[],
+  averagePriceMonthly: number,
+  averageVolumeMonthly: number,
+  dailyPercentageChange: number,
+  dailyPriceChange: number
+
 }

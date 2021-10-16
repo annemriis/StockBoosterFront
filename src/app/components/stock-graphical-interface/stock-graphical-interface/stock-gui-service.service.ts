@@ -15,6 +15,10 @@ export class StockGuiServiceService {
   lastDate: string
   stockDateInfo: string[]
   stockCloseInfo: number[]
+  averagePriceMonthly: number
+  averageVolumeMonthly: number
+  dailyPercentageChange: number
+  dailyPriceChange: number
   dataSource = [{"symbol": "", "open": 0, "close": 0, "high": 0, "volume": 0, "lastDate": "", "stockDateInfo": [""],
     "stockCloseInfo": [0]}];
   lineChartData: [{data: number[], label: string}]
@@ -33,6 +37,10 @@ export class StockGuiServiceService {
     this.dataSource = []
     this.lineChartData = [{data: [0], label: "Stock's close info" }]
     this.lineChartLabels = []
+    this.averagePriceMonthly = 0
+    this.averageVolumeMonthly = 0
+    this.dailyPercentageChange = 0
+    this.dailyPriceChange = 0
   }
 
   buildStockInfoWithInterface(stockInterface: StockInterface) {
@@ -44,6 +52,10 @@ export class StockGuiServiceService {
     this.setLastDate(stockInterface.lastDate)
     this.setStockCloseInfo(stockInterface.stockCloseInfo)
     this.setStockDateInfo(stockInterface.stockDateInfo)
+    this.setAveragePriceMonthly(stockInterface.averagePriceMonthly)
+    this.setAverageVolumeMonthly(stockInterface.averageVolumeMonthly)
+    this.setDailyPercentageChange(stockInterface.dailyPercentageChange)
+    this.setDailyPriceChange(stockInterface.dailyPriceChange)
     this.dataSource = [{
       "symbol": this.symbol ? this.symbol : "",
       "open": this.open ? this.open : 0,
@@ -92,8 +104,21 @@ export class StockGuiServiceService {
     this.stockDateInfo = stockDateInfo
   }
 
-  public setStockCloseInfo(stockCloseInfo: number[]) {
-    this.stockCloseInfo = stockCloseInfo
+  public setStockCloseInfo(closeInfo: number[]) {
+    this.stockCloseInfo = closeInfo;
+  }
+
+  public setAveragePriceMonthly(averagePriceMonthly: number) {
+    this.averagePriceMonthly = averagePriceMonthly
+  }
+  public setAverageVolumeMonthly(averageVolumeMonthly: number) {
+    this.averageVolumeMonthly = averageVolumeMonthly
+  }
+  public setDailyPercentageChange(dailyPercentageChange: number) {
+    this.dailyPercentageChange = dailyPercentageChange
+  }
+  public setDailyPriceChange(dailyPriceChange: number) {
+    this.dailyPriceChange = dailyPriceChange
   }
 
 }
