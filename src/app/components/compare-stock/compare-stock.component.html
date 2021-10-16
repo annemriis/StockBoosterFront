@@ -14,20 +14,6 @@
     </mat-form-field>
     <button mat-button (click)="getStockData(text.value)">Search</button>
   </div>
-
-  <app-stock-graphical-interface *ngIf="hasSubmitted"
-                                 [symbol]="stockGUIService.symbol"
-                                 [open]="stockGUIService.open"
-                                 [high]="stockGUIService.high"
-                                 [close]="stockGUIService.close"
-                                 [volume]="stockGUIService.volume"
-                                 [lastDate]="stockGUIService.lastDate"
-                                 [stockDateInfo]="stockGUIService.stockDateInfo"
-                                 [stockCloseInfo]="stockGUIService.stockCloseInfo"
-                                 [dataSource]="stockGUIService.dataSource"
-                                 [lineChartData]="stockGUIService.lineChartData"
-                                 [lineChartLabels]="stockGUIService.lineChartLabels">
-  </app-stock-graphical-interface>
   <app-stock-graphical-interface *ngIf="hasSubmitted"
                                  [symbol]="stockGUIService.symbol"
                                  [open]="stockGUIService.open"
