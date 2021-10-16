@@ -4,7 +4,19 @@
   align-self: flex-start;
   width: 75rem;
   height: 100%;
-  border: 3px solid black;
+}
+
+.spy-info {
+  margin-top: 2%;
+  width: 90%;
+}
+
+.dow-info {
+  width: 90%;
+}
+
+table {
+  width: 50%;
 }
 
 @media only screen and (max-width: 600px) {

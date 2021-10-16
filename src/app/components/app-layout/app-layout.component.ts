@@ -3,7 +3,6 @@ import {WebRequestService} from "../../web-request.service";
 import {TaskService} from "../../task.service";
 import {StockGuiServiceService} from "../stock-graphical-interface/stock-graphical-interface/stock-gui-service.service";
 import {StockInterface} from "../../Interface/StockInterface";
-import {resolve} from "@angular/compiler-cli/src/ngtsc/file_system";
 
 @Component({
   selector: 'app-app-layout',
@@ -19,8 +18,7 @@ export class AppLayoutComponent implements OnInit {
 
   constructor(private  apiService: WebRequestService, private taskService: TaskService,
               public stockGUIService: StockGuiServiceService) {
-    this.getSPYData()
-    setTimeout(() => this.getDOWData, 10000)
+
   }
 
   stockGui!: StockGuiServiceService[]
@@ -33,17 +31,6 @@ export class AppLayoutComponent implements OnInit {
     "stockCloseInfo": [0]}];
   dataSourceDOW = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "", "stockDateInfo": [""],
     "stockCloseInfo": [0]}];
-
-
-  initStockTabels() {
-    for (let i in  this.symbols) {
-      // Has to be called with at least 3 sec interval otherwise items wont display
-      setTimeout(() => this.getData(i), 10000)
-
-    }
-
-    // There should be a method for getting dataSource
-  }
 
 
   getData = (string: String) => {
@@ -67,7 +54,7 @@ export class AppLayoutComponent implements OnInit {
   }
 
   getDOWData = () => {
-    this.taskService.getStock("DJI").subscribe((data) => {
+    this.taskService.getStock("SPY").subscribe((data) => {
       this.stockInterface = data
       this.stockGUIDOW = JSON.parse(JSON.stringify(this.stockGUIService.buildStockInfoWithInterface(this.stockInterface)))
       console.log(this.dataSourceDOW)
@@ -80,6 +67,11 @@ export class AppLayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    for (let i in this.symbols) {
+      this.getData(i)
+    }
+    this.getSPYData()
+    this.getDOWData()
   }
 
 }
