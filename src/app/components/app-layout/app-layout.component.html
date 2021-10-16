@@ -1,6 +1,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <div class="layout-container">
-  <h2 fxLayout="row" fxLayoutAlign="center center">Here you can get an overview of some of the most popular stocks.</h2>
+
+  <app-stock-graphical-interface
+    *ngIf="hasSubmitted"
+    [symbol]="stockGUISPY.symbol"
+    [open]="stockGUISPY.open"
+    [high]="stockGUISPY.high"
+    [close]="stockGUISPY.close"
+    [volume]="stockGUISPY.volume"
+    [lastDate]="stockGUISPY.lastDate"
+    [stockDateInfo]="stockGUISPY.stockDateInfo"
+    [stockCloseInfo]="stockGUISPY.stockCloseInfo"
+    [dataSource]="stockGUISPY.dataSource"
+    [lineChartData]="stockGUISPY.lineChartData"
+    [lineChartLabels]="stockGUISPY.lineChartLabels"
+  ></app-stock-graphical-interface>
+  <app-stock-graphical-interface
+    *ngIf="hasSubmitted"
+    [symbol]="stockGUIDOW.symbol"
+    [open]="stockGUIDOW.open"
+    [high]="stockGUIDOW.high"
+    [close]="stockGUIDOW.close"
+    [volume]="stockGUIDOW.volume"
+    [lastDate]="stockGUIDOW.lastDate"
+    [stockDateInfo]="stockGUIDOW.stockDateInfo"
+    [stockCloseInfo]="stockGUIDOW.stockCloseInfo"
+    [dataSource]="stockGUIDOW.dataSource"
+    [lineChartData]="stockGUIDOW.lineChartData"
+    [lineChartLabels]="stockGUIDOW.lineChartLabels"
+  ></app-stock-graphical-interface>
 
 </div>
