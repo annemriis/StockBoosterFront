@@ -7,43 +7,46 @@ import {StockInterface} from "../../../Interface/StockInterface";
 
 export class StockGuiServiceService {
 
-  symbol: string
-  open: number
-  close: number
-  high: number
-  volume: number
-  lastDate: string
-  stockDateInfo: string[]
-  stockCloseInfo: number[]
+  symbol: string; symbol2: string
+  open: number; open2: number
+  close: number; close2: number
+  high: number; high2: number
+  volume: number; volume2: number
+  lastDate: string; lastDate2: string
+  stockDateInfo: string[]; stockDateInfo2: string[]
+  stockCloseInfo: number[]; stockCloseInfo2: number[]
   averagePriceMonthly: number
   averageVolumeMonthly: number
   dailyPercentageChange: number
   dailyPriceChange: number
   dataSource = [{"symbol": "", "open": 0, "close": 0, "high": 0, "volume": 0, "lastDate": "", "stockDateInfo": [""],
-    "stockCloseInfo": [0]}];
-  lineChartData: [{data: number[], label: string}]
-  lineChartLabels: string[]
+    "stockCloseInfo": [0]}]; dataSource2 = [{}]
+  lineChartData: [{data: number[], label: string}]; lineChartData2: [{data: number[], label: string}]
+  lineChartLabels: string[]; lineChartLabels2: string[]
+  secondValue: boolean;
 
 
   constructor() {
-    this.symbol = ''
-    this.open = 1
-    this.close = 1
-    this.high = 1
-    this.volume = 1
-    this.lastDate = ""
-    this.stockDateInfo = []
-    this.stockCloseInfo = []
-    this.dataSource = []
-    this.lineChartData = [{data: [0], label: "Stock's close info" }]
-    this.lineChartLabels = []
+    this.symbol = ''; this.symbol2 = ''
+    this.open = 1; this.open2 = 1
+    this.close = 1; this.close2 = 1
+    this.high = 1; this.high2 = 1
+    this.volume = 1; this.volume2 = 1
+    this.lastDate = ""; this.lastDate2 = ""
+    this.stockDateInfo = []; this.stockDateInfo2 = []
+    this.stockCloseInfo = []; this.stockCloseInfo2 = []
+    this.dataSource = []; this.dataSource2 = []
+    this.lineChartData = [{data: [0], label: "Stock's close info" }]; this.lineChartData2 = [{data: [0], label: "Stock's close info" }]
+    this.lineChartLabels = []; this.lineChartLabels2 = []
     this.averagePriceMonthly = 0
     this.averageVolumeMonthly = 0
     this.dailyPercentageChange = 0
     this.dailyPriceChange = 0
+    this.secondValue = false
   }
 
-  buildStockInfoWithInterface(stockInterface: StockInterface) {
+  buildStockInfoWithInterface(stockInterface: StockInterface, secondValue: boolean) {
+    this.secondValue = secondValue;
     this.setSymbol(stockInterface.symbol)
     this.setOpen(stockInterface.open)
     this.setClose(stockInterface.close)
@@ -56,18 +59,11 @@ export class StockGuiServiceService {
     this.setAverageVolumeMonthly(stockInterface.averageVolumeMonthly)
     this.setDailyPercentageChange(stockInterface.dailyPercentageChange)
     this.setDailyPriceChange(stockInterface.dailyPriceChange)
-    this.dataSource = [{
-      "symbol": this.symbol ? this.symbol : "",
-      "open": this.open ? this.open : 0,
-      "close": this.close ? this.close : 0,
-      "high": this.high ? this.high : 0,
-      "volume": this.volume ? this.volume : 0,
-      "lastDate": this.lastDate ? this.lastDate : "",
-      "stockDateInfo": this.stockDateInfo ? this.stockDateInfo : [],
-      "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],
-    }];
-    this.lineChartData = [{data: this.stockCloseInfo.reverse(), label: "Stock's close info" }]
-    this.lineChartLabels = this.stockDateInfo.reverse()
+    this.setLineChartData(stockInterface.stockCloseInfo.reverse(), stockInterface.stockDateInfo.reverse())
+    this.dataSource = [{"symbol": this.symbol ? this.symbol : "", "open": this.open ? this.open : 0,
+      "close": this.close ? this.close : 0, "high": this.high ? this.high : 0, "volume": this.volume ? this.volume : 0,
+      "lastDate": this.lastDate ? this.lastDate : "", "stockDateInfo": this.stockDateInfo ? this.stockDateInfo : [],
+      "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],}];
     this.isBuilding();
     return this;
   }
@@ -77,35 +73,86 @@ export class StockGuiServiceService {
   }
 
   public setSymbol(symbol: string) {
-    this.symbol = symbol
+    if (this.secondValue) {
+      this.symbol2 = symbol
+    }
+    else {
+      this.symbol = symbol
+    }
   }
 
   public setOpen(open: number) {
-    this.open = open
+    if (this.secondValue) {
+      this.open2 = open
+    }
+    else {
+      this.open = open
+    }
   }
 
   public setClose(close: number) {
-    this.close = close
+    if (this.secondValue) {
+      this.close2 = close
+    }
+    else {
+      this.close = close
+    }
   }
 
   public setHigh(high: number) {
-    this.high = high
+    if (this.secondValue) {
+      this.high2 = high
+    }
+    else {
+      this.high = high
+    }
   }
 
   public setVolume(volume: number) {
-    this.volume = volume
+    if (this.secondValue) {
+      this.volume2 = volume
+    }
+    else {
+      this.volume = volume
+    }
   }
 
   public setLastDate(lastDate: string) {
-    this.lastDate = lastDate
+    if (this.secondValue) {
+      this.lastDate2 = lastDate
+    }
+    else {
+      this.lastDate = lastDate
+    }
   }
 
   public setStockDateInfo(stockDateInfo: string[]) {
-    this.stockDateInfo = stockDateInfo
+    if (this.secondValue) {
+      this.stockDateInfo2 = stockDateInfo
+    }
+    else {
+      this.stockDateInfo = stockDateInfo
+    }
   }
 
   public setStockCloseInfo(closeInfo: number[]) {
-    this.stockCloseInfo = closeInfo;
+    if (this.secondValue) {
+      this.stockCloseInfo2 = closeInfo
+    }
+    else {
+      this.stockCloseInfo = closeInfo
+    }
+  }
+
+  public setLineChartData(chartData: number[], dateInfo: string[]) {
+    if (this.secondValue) {
+      this.lineChartData2 = [{data: chartData, label: "Stock's close info" }]
+      this.lineChartLabels2 = dateInfo
+    }
+    else {
+      this.lineChartData = [{data: chartData, label: "Stock's close info" }]
+      this.lineChartLabels = dateInfo
+    }
   }
 
   public setAveragePriceMonthly(averagePriceMonthly: number) {

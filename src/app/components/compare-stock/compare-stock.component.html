@@ -1,6 +1,44 @@
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="compare-stock-container" fxLayout="column" fxLayoutAlign="start" fxLayoutGap="50px">
+  <h2  fxLayout="row" fxLayoutAlign="center center">Here you can compare two stocks and get their information.</h2>
 
-<div class="morale-container">
-  <h2 fxLayout="row" fxLayoutAlign="center center">Here you can enter two stocks and compare their stats.</h2>
+  <div class="search" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <mat-form-field color="primary" appearance="outline">
+      <mat-label>Enter a stock symbol</mat-label>
+      <input matInput #symbol/>
+    </mat-form-field>
+    <button mat-button (click)="getData(symbol.value)">Search</button>
+
+    <mat-form-field color="primary" appearance="outline">
+      <mat-label>Enter a stock symbol</mat-label>
+      <input matInput #text/>
+    </mat-form-field>
+    <button mat-button (click)="getStockData(text.value)">Search</button>
+  </div>
+  <app-stock-graphical-interface *ngIf="hasSubmitted"
+                                 [symbol]="stockGUIService.symbol"
+                                 [open]="stockGUIService.open"
+                                 [high]="stockGUIService.high"
+                                 [close]="stockGUIService.close"
+                                 [volume]="stockGUIService.volume"
+                                 [lastDate]="stockGUIService.lastDate"
+                                 [stockDateInfo]="stockGUIService.stockDateInfo"
+                                 [stockCloseInfo]="stockGUIService.stockCloseInfo"
+                                 [dataSource]="stockGUIService.dataSource"
+                                 [lineChartData]="stockGUIService.lineChartData"
+                                 [lineChartLabels]="stockGUIService.lineChartLabels">
+  </app-stock-graphical-interface>
+  <app-stock-graphical-interface *ngIf="hasSubmitted2"
+                                 [symbol]="stockGUIService.symbol2"
+                                 [open]="stockGUIService.open2"
+                                 [high]="stockGUIService.high2"
+                                 [close]="stockGUIService.close2"
+                                 [volume]="stockGUIService.volume2"
+                                 [lastDate]="stockGUIService.lastDate2"
+                                 [stockDateInfo]="stockGUIService.stockDateInfo2"
+                                 [stockCloseInfo]="stockGUIService.stockCloseInfo2"
+                                 [dataSource]="stockGUIService.dataSource"
+                                 [lineChartData]="stockGUIService.lineChartData2"
+                                 [lineChartLabels]="stockGUIService.lineChartLabels2">
+  </app-stock-graphical-interface>
 
 </div>

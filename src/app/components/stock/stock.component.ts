@@ -25,7 +25,7 @@ export class StockComponent implements OnInit {
   getStockData = (symbol: string) => {
     this.taskService.getStock(symbol.toUpperCase()).subscribe((data) => {
       this.stockInterface = data
-      this.stockGUIService.buildStockInfoWithInterface(this.stockInterface)
+      this.stockGUIService.buildStockInfoWithInterface(this.stockInterface, false)
       this.dataSource = this.stockGUIService.dataSource
       this.hasSubmitted = true;
     });
