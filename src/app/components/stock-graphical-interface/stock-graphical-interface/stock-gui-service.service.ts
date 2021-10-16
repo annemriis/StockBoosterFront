@@ -54,8 +54,8 @@ export class StockGuiServiceService {
       "stockDateInfo": this.stockDateInfo ? this.stockDateInfo : [],
       "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],
     }];
-    this.lineChartData = [{data: this.stockCloseInfo, label: "Stock's close info" }]
-    this.lineChartLabels = this.stockDateInfo
+    this.lineChartData = [{data: this.stockCloseInfo.reverse(), label: "Stock's close info" }]
+    this.lineChartLabels = this.stockDateInfo.reverse()
     this.isBuilding();
     return this;
   }
