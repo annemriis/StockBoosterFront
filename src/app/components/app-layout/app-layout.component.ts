@@ -23,6 +23,8 @@ export class AppLayoutComponent implements OnInit {
     setTimeout(() => this.getDOWData, 10000)
   }
 
+  stockGui!: StockGuiServiceService[]
+  symbols = ["SPY", "DOW"]
   stockGUISPY!: StockGuiServiceService
   stockGUIDOW!: StockGuiServiceService
   hasSubmitted: boolean = false;
@@ -33,12 +35,31 @@ export class AppLayoutComponent implements OnInit {
     "stockCloseInfo": [0]}];
 
 
+  initStockTabels() {
+    for (let i in  this.symbols) {
+      // Has to be called with at least 3 sec interval otherwise items wont display
+      setTimeout(() => this.getData(i), 10000)
+
+    }
+
+    // There should be a method for getting dataSource
+  }
+
+
+  getData = (string: String) => {
+    this.taskService.getStock(string).subscribe((data) => {
+      this.stockInterface = data
+      this.stockGui.push(JSON.parse(JSON.stringify(this.stockGUIService.buildStockInfoWithInterface(this.stockInterface))))
+    });
+    // Need to implement something for the case where the given stock symbol doesn't exist
+  }
+
   getSPYData = () => {
     this.taskService.getStock("SPY").subscribe((data) => {
       this.stockInterface = data
       this.stockGUISPY = JSON.parse(JSON.stringify(this.stockGUIService.buildStockInfoWithInterface(this.stockInterface)))
       if (this.stockGUISPY != undefined) {
-        this.dataSourceSPY = this.stockGUISPY.dataSource
+        this.dataSourceSPY = this.stockGUIDOW.dataSource
         this.hasSubmitted = true;
       }
     });
