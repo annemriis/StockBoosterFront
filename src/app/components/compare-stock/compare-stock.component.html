@@ -27,5 +27,18 @@
                                  [lineChartData]="stockGUIService.lineChartData"
                                  [lineChartLabels]="stockGUIService.lineChartLabels">
   </app-stock-graphical-interface>
+  <app-stock-graphical-interface *ngIf="hasSubmitted2"
+                                 [symbol]="stockGUIService.symbol2"
+                                 [open]="stockGUIService.open2"
+                                 [high]="stockGUIService.high2"
+                                 [close]="stockGUIService.close2"
+                                 [volume]="stockGUIService.volume2"
+                                 [lastDate]="stockGUIService.lastDate2"
+                                 [stockDateInfo]="stockGUIService.stockDateInfo2"
+                                 [stockCloseInfo]="stockGUIService.stockCloseInfo2"
+                                 [dataSource]="stockGUIService.dataSource"
+                                 [lineChartData]="stockGUIService.lineChartData2"
+                                 [lineChartLabels]="stockGUIService.lineChartLabels2">
+  </app-stock-graphical-interface>
 
 </div>

@@ -17,6 +17,7 @@ export class CompareStockComponent implements OnInit {
   }
 
   hasSubmitted: boolean = false;
+  hasSubmitted2: boolean = false;
   stockInterface!: StockInterface
   dataSource = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "", "stockDateInfo": [""],
     "stockCloseInfo": [0]}];
@@ -25,7 +26,7 @@ export class CompareStockComponent implements OnInit {
   getData = (symbol: string) => {
     this.taskService.getStock(symbol.toUpperCase()).subscribe((data) => {
       this.stockInterface = data
-      this.stockGUIService.buildStockInfoWithInterface(this.stockInterface)
+      this.stockGUIService.buildStockInfoWithInterface(this.stockInterface, false)
       this.dataSource = this.stockGUIService.dataSource
       this.hasSubmitted = true;
     });
@@ -35,9 +36,9 @@ export class CompareStockComponent implements OnInit {
   getStockData = (symbol: string) => {
     this.taskService.getStock(symbol.toUpperCase()).subscribe((data) => {
       this.stockInterface = data
-      this.stockGUIService.buildStockInfoWithInterface(this.stockInterface)
+      this.stockGUIService.buildStockInfoWithInterface(this.stockInterface, true)
       this.dataSource = this.stockGUIService.dataSource
-      this.hasSubmitted = true;
+      this.hasSubmitted2 = true;
     });
     // Need to implement something for the case where the given stock symbol doesn't exist
   }
