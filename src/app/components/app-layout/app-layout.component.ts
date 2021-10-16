@@ -37,7 +37,7 @@ export class AppLayoutComponent implements OnInit {
   getData = (string: String) => {
     this.taskService.getStock(string).subscribe((data) => {
       this.stockInterface = data
-      this.stockGui.push(JSON.parse(JSON.stringify(this.stockGUIService.buildStockInfoWithInterface(this.stockInterface))))
+      this.stockGui.push(JSON.parse(JSON.stringify(this.stockGUIService.buildStockInfoWithInterface(this.stockInterface, false))))
     });
     // Need to implement something for the case where the given stock symbol doesn't exist
   }
@@ -45,7 +45,7 @@ export class AppLayoutComponent implements OnInit {
   getSPYData = () => {
     this.taskService.getStock("SPY").subscribe((data) => {
       this.stockInterface = data
-      this.stockGUISPY = JSON.parse(JSON.stringify(this.stockGUIService.buildStockInfoWithInterface(this.stockInterface)))
+      this.stockGUISPY = JSON.parse(JSON.stringify(this.stockGUIService.buildStockInfoWithInterface(this.stockInterface, false)))
       if (this.stockGUISPY != undefined) {
         this.dataSourceSPY = this.stockGUIDOW.dataSource
         this.hasSubmitted = true;
@@ -57,7 +57,7 @@ export class AppLayoutComponent implements OnInit {
   getDOWData = () => {
     this.taskService.getStock("NDAQ").subscribe((data) => {
       this.stockInterface = data
-      this.stockGUIDOW = JSON.parse(JSON.stringify(this.stockGUIService.buildStockInfoWithInterface(this.stockInterface)))
+      this.stockGUIDOW = JSON.parse(JSON.stringify(this.stockGUIService.buildStockInfoWithInterface(this.stockInterface, false)))
       console.log(this.dataSourceDOW)
       if (this.stockGUIDOW != undefined) {
         this.dataSourceDOW = this.stockGUIDOW.dataSource
