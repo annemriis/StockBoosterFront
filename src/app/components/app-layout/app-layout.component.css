@@ -9,7 +9,8 @@
 .spy-info {
   margin-top: 0.5%;
   width: 80%;
-  height: 70%
+  height: 70%;
+  align-self: center;
 }
 
 .dow-info {
