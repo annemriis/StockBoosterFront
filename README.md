@@ -16,3 +16,6 @@
   - Run `npm i` to install npm modules
   - Run `ng serve` to start front-end
   - Navigate to `http://localhost:4200/`
+
+## How to server
+  - npm run build
