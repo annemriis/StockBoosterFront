@@ -3,7 +3,7 @@ stages:
   - build
   - deploy
 
-build heroes:
+build frontend:
   stage: build
   image: node:12-alpine
   cache:
@@ -18,7 +18,7 @@ build heroes:
     - npm install
     - npm run build
 
-deploy heroes:
+deploy frontend:
   stage: deploy
   only:
     refs:
