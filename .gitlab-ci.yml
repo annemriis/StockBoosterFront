@@ -22,7 +22,7 @@ deploy frontend:
   stage: deploy
   only:
     refs:
-      - 42-gitlab-ci-part-2
+      - 40-frontend-gitlab-runner
       - main # only branch to be deployed
   tags:
     - frontend-runner
