@@ -10,8 +10,6 @@ import {StockInterface} from "./Interface/StockInterface";
 })
 export class WebRequestService {
 
-  private url = "http://localhost:8080/"
-
   constructor(
     private http: HttpClient
   ) { }
@@ -25,7 +23,7 @@ export class WebRequestService {
 
 
   getRequest(uri:string): Observable<StockInterface> {
-    return this.http.get<StockInterface>(this.url + uri, {headers: this.headers})
+    return this.http.get<StockInterface>(uri, {headers: this.headers})
   }
 
 
