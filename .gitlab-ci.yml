@@ -1,0 +1,32 @@
+
+stages:
+  - build
+  - deploy
+
+build frontend:
+  stage: build
+  image: node:12-alpine
+  cache:
+    paths:
+      - node_modules
+  artifacts:
+    paths:
+      - dist
+  tags:
+    - frontend-runner
+  script:
+    - npm install
+    - npm run build
+
+deploy frontend:
+  stage: deploy
+  only:
+    refs:
+      - 40-frontend-gitlab-runner
+      - main # only branch to be deployed
+  tags:
+    - frontend-runner
+  script:
+    - mkdir -p ~/front-deployment
+    - rm -rf ~/front-deployment/*
+    - cp -r dist/. ~/front-deployment
