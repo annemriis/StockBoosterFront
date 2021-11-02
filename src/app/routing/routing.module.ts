@@ -6,6 +6,7 @@ import {StockComponent} from "../components/stock/stock.component";
 import {MoraleComponent} from "../components/morale/morale.component";
 import {AboutUsComponent} from "../components/about-us/about-us.component";
 import {CompareStockComponent} from "../components/compare-stock/compare-stock.component";
+import {LoginComponent} from "../components/login/login.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/app-layout', pathMatch: 'full' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'stock', component: StockComponent},
   { path: 'about-us', component: AboutUsComponent},
   { path: 'compare-stock', component: CompareStockComponent},
+  { path: 'login', component: LoginComponent},
 
 ];
 @NgModule({
