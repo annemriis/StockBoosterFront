@@ -102,3 +102,16 @@ deploy frontend:
     - rm -rf ~/front-deployment/*
     - cp -r dist/. ~/front-deployment
 ```
+## Domain
+- For our domain we used freenom.com
+- Domain name is stockbooster.ml
+- Used AWS Route 53 DNS management and created a hosted zone
+- Created a record
+- Added 4 nameservers from AWS to freenom
+
+## Https
+- Connect to server with `ssh ubuntu@13.48.85.253`
+- Navigate to `ubuntu@ip-172-31-11-163:/etc/nginx/sites-available`
+- Run `sudo apt install python3-certbot-nginx`
+- Run `sudo certbot –-nginx`
+- Complete the setup
