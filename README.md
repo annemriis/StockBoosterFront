@@ -60,7 +60,7 @@ echo "deb-src [signed-by=$KEYRING] https://deb.nodesource.com/$VERSION $DISTRO m
 ```
  - Install Node.js with `sudo apt-get install nodejs`
 
-## Gitlab runner
+## GitLab runner
 
  - Install? Kuidas see tehtud on? Mis commandiga?
  - Gitlab runner is registered with command `sudo gitlab-runner register` 
@@ -94,7 +94,6 @@ deploy frontend:
   stage: deploy
   only:
     refs:
-      - 40-frontend-gitlab-runner
       - main # only branch to be deployed
   tags:
     - frontend-runner
