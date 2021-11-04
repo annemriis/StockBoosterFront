@@ -34,6 +34,32 @@ sudo swapon -show
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 ```
 
+
+## Install Node.js
+
+ - Install Node.js on the Linux Server
+   
+ Manual installation: 
+ - Add the NodeSource package signing key with following commands:
+
+```bash
+KEYRING=/usr/share/keyrings/nodesource.gpg
+curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor | sudo tee "$KEYRING" >/dev/null
+gpg --no-default-keyring --keyring "$KEYRING" --list-keys
+```
+
+ - The key ID is `9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280`
+ - Add the version 14 NodeSource repository with following commands:
+
+```bash
+VERSION=node_14.x
+KEYRING=/usr/share/keyrings/nodesource.gpg
+DISTRO="$(lsb_release -s -c)"
+echo "deb [signed-by=$KEYRING] https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+echo "deb-src [signed-by=$KEYRING] https://deb.nodesource.com/$VERSION $DISTRO main" | sudo tee -a /etc/apt/sources.list.d/nodesource.list
+```
+ - Install Node.js with `sudo apt-get install nodejs`
+
 ## Gitlab runner
 
  - Install? Kuidas see tehtud on? Mis commandiga?
