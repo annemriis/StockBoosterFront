@@ -20,6 +20,20 @@
 ## How to server (mis see täpselt on?)
   - npm run build
 
+## Virtual memory
+
+ - Added virtual memory for the server
+ - For 2Gb virtual memory run commands:
+
+```bash
+sudo fallocate -l 2G /swapfile  
+sudo chmod 600 /swapfile  
+sudo mkswap /swapfile  
+sudo swapon /swapfile  
+sudo swapon -show  
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+```
+
 ## Gitlab runner
 
  - Install? Kuidas see tehtud on? Mis commandiga?
@@ -30,7 +44,7 @@
  - Executor is shell
  - Following code is added to the frontend `.gitlab-ci.yml` file
 
-```
+```bash
 stages:
   - build
   - deploy
