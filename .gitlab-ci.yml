@@ -29,4 +29,4 @@ deploy frontend:
   script:
     - mkdir -p ~/front-deployment
     - rm -rf ~/front-deployment/*
-    - docker cp front:/usr/local/app/dist/. ~/front-deployment/
+    - docker cp front:/usr/local/app/ ~/front-deployment/
