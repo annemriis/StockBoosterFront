@@ -6,8 +6,7 @@ FROM node:14.18-alpine as build
 RUN mkdir -p /app
 WORKDIR /app
 COPY package.json /app
-
-
+RUN npm install -g npm-install-peers
 RUN npm install
 COPY . /app
 RUN npm run build --prod
