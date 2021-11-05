@@ -16,7 +16,6 @@ build frontend:
     - frontend-runner
   script:
     - docker stop front
-    - docker rm -f front
     - docker build -t front:latest .
 
 deploy frontend:
