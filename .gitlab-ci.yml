@@ -5,7 +5,7 @@ stages:
 
 build frontend:
   stage: build
-  image: node:12-alpine
+  image: node:14.18-alpine
   cache:
     paths:
       - node_modules
@@ -15,18 +15,21 @@ build frontend:
   tags:
     - frontend-runner
   script:
-    - npm install
-    - npm run build
+    - docker stop front
+    - docker rm -f front
+    - docker build -t front:latest .
 
 deploy frontend:
   stage: deploy
   only:
     refs:
-      - 40-frontend-gitlab-runner
+      - 46-dokerize-front-end
       - main # only branch to be deployed
   tags:
     - frontend-runner
   script:
     - mkdir -p ~/front-deployment
     - rm -rf ~/front-deployment/*
-    - cp -r dist/. ~/front-deployment
+    - docker run -d --name=front front:latest
+    - docker ps
+    - docker cp front:/app/dist ~/front-deployment/
