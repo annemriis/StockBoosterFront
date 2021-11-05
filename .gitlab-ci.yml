@@ -22,7 +22,7 @@ deploy frontend:
   stage: deploy
   only:
     refs:
-      - 46-dokerize-front-end
+      - 49-fix-front-end-docker
       - main # only branch to be deployed
   tags:
     - frontend-runner
