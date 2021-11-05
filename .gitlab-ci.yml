@@ -25,7 +25,7 @@ deploy frontend:
   only:
     refs:
       - 46-dokerize-front-end
-      - main # only branch to be deployed
+      - main # only branch to be deploye
   tags:
     - frontend-runner
   script:
