@@ -102,3 +102,25 @@ deploy frontend:
     - rm -rf ~/front-deployment/*
     - cp -r dist/. ~/front-deployment
 ```
+
+## Nginx
+
+ - Go to root `cd /`
+ - Install Nginx with `sudo apt-get install nginx`
+ - Modify the existing file (`default`) in `/etc/nginx/sites-available/` by removing comments
+ - Go to `/var/www/`
+ - Create a symlink from `/home/gitlab-runner/front-deployment/` to `/var/www/front-deployment` with `sudo ln -s /home/gitlab-runner/front-deployment/ /var/www/front-deployment`
+ - Go to `/etc/nginx/sites-available/`
+ - Enter `sudo nano default` and change the root to `/var/www/front-deployment`
+ - Go to `etc/nginx/sites-enabled/` and remove `default-copy` with `sudo rm default-copy`
+ - Restart Nginx `sudo service nginx restart`
+ - Enter `sudo nano default` remove the index file and change the location to:
+```bash
+   location / {
+        index  index.html index.htm;
+        if (!-e $request_filename){
+          rewrite ^(.*)$ /index.html break;
+        }
+    }
+```
+ - Restart Nginx `sudo service nginx restart`
