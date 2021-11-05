@@ -16,7 +16,7 @@ build frontend:
     - frontend-runner
   script:
     - docker build -t front:latest .
-    - docker-compose up -d
+    - docker run -d --name=front front:latest
 
 deploy frontend:
   stage: deploy
@@ -30,5 +30,4 @@ deploy frontend:
     - mkdir -p ~/front-deployment
     - rm -rf ~/front-deployment/*
     - docker ps
-
     - docker cp front:./app/dist ~/front-deployment/
