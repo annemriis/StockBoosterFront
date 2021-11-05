@@ -15,6 +15,7 @@ build frontend:
   tags:
     - frontend-runner
   script:
+    - docker stop front
     - docker rm -f front
     - docker build -t front:latest .
 
@@ -29,7 +30,6 @@ deploy frontend:
   script:
     - mkdir -p ~/front-deployment
     - rm -rf ~/front-deployment/*
-    - docker ps
     - docker run -d --name=front front:latest
     - docker ps
     - docker cp front:/app/dist ~/front-deployment/
