@@ -16,7 +16,7 @@ RUN npm install -g npm-install-peers
 # Generate the build of the application
 RUN npm run build
 
-# add gitlab runner to docker gruop 'sudo usermod -a -G docker gitlab-runner'
+# add gitlab runner t docker gruop 'sudo usermod -a -G docker gitlab-runner'
 
 
 
