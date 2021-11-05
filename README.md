@@ -1,6 +1,7 @@
 # Web application from team_02 - front end
 
 ## Team members
+
   - Peeter Tarvas
 
   - Annemari Riisimäe
@@ -18,13 +19,13 @@
   - Navigate to `http://localhost:4200/`
 
 ## How to server (mis see täpselt on?)
+
   - npm run build
 
 ## Virtual memory
 
  - Added virtual memory for the server
  - For 2Gb virtual memory run commands:
-
 ```bash
 sudo fallocate -l 2G /swapfile  
 sudo chmod 600 /swapfile  
@@ -41,16 +42,13 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
    
  Manual installation: 
  - Add the NodeSource package signing key with following commands:
-
 ```bash
 KEYRING=/usr/share/keyrings/nodesource.gpg
 curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | gpg --dearmor | sudo tee "$KEYRING" >/dev/null
 gpg --no-default-keyring --keyring "$KEYRING" --list-keys
 ```
-
  - The key ID is `9FD3B784BC1C6FC31A8A0A1C1655A0AB68576280`
  - Add the version 14 NodeSource repository with following commands:
-
 ```bash
 VERSION=node_14.x
 KEYRING=/usr/share/keyrings/nodesource.gpg
@@ -124,3 +122,19 @@ deploy frontend:
     }
 ```
  - Restart Nginx `sudo service nginx restart`
+
+## Domain
+
+ - For our domain we used freenom.com
+ - Domain name is `stockbooster.ml`
+ - Used AWS Route 53 DNS management and created a hosted zone
+ - Created a record
+ - Added 4 nameservers from AWS to freenom
+
+## Https
+
+ - Connect to server with `ssh ubuntu@13.48.85.253`
+ - Navigate to `ubuntu@ip-172-31-11-163:/etc/nginx/sites-available`
+ - Run `sudo apt install python3-certbot-nginx`
+ - Run `sudo certbot –-nginx`
+ - Complete the setup
