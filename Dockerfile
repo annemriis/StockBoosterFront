@@ -15,5 +15,7 @@ RUN npm install
 # Generate the build of the application
 RUN npm run build
 
+# add gitlab runner to docker gruop 'sudo usermod -a -G docker gitlab-runner'
+
 
 
