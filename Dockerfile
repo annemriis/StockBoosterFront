@@ -10,7 +10,8 @@ WORKDIR /usr/local/app
 COPY ./ /usr/local/app/
 
 # Install all the dependencies
-RUN npm install
+RUN npm cache clean
+RUN npm install -g npm-install-peers
 
 # Generate the build of the application
 RUN npm run build

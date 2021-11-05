@@ -4,5 +4,3 @@ services:
   front:
     container_name: "front"
     image: front:latest
-    ports:
-      - "80:80"

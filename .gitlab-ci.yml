@@ -15,6 +15,7 @@ build frontend:
   tags:
     - frontend-runner
   script:
+    - npm cache clean
     - npm install
     - npm run build
     - docker build -t front:latest .
