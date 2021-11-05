@@ -17,16 +17,18 @@ build frontend:
   script:
     - npm install
     - npm run build
+    - docker build -t front:latest .
+    - docker-compose up -d
 
 deploy frontend:
   stage: deploy
   only:
     refs:
-      - 40-frontend-gitlab-runner
+      - 46-dokerize-front-end
       - main # only branch to be deployed
   tags:
     - frontend-runner
   script:
     - mkdir -p ~/front-deployment
     - rm -rf ~/front-deployment/*
-    - cp -r dist/. ~/front-deployment
+    - docker cp front:/usr/local/app/dist/. ~/front-deployment/
