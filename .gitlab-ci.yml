@@ -17,8 +17,8 @@ build frontend:
   script:
     - npm install
     - npm run build
-    - sudo docker build -t front:latest .
-    - sudo docker-compose up -d
+    - docker build -t front:latest .
+    - docker-compose up -d
 
 deploy frontend:
   stage: deploy
@@ -31,4 +31,4 @@ deploy frontend:
   script:
     - mkdir -p ~/front-deployment
     - rm -rf ~/front-deployment/*
-    - sudo docker cp front:/usr/local/app/dist/. ~/front-deployment/
+    - docker cp front:/usr/local/app/dist/. ~/front-deployment/
