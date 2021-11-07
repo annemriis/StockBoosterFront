@@ -6,11 +6,6 @@ services:
     image: front:latest
     ports:
      - "80:80"
-    build:
-      context: .
-      args:
-      - CERTBOT_EMAIL=hello@yourcompany.com #replace with your own email
-      - DOMAIN_LIST=yourcompany.com,api.yourcompany.com,www.yourcompany.com #replace with your own domains
     restart: always
     networks:
       - mynet
