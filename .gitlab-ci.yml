@@ -15,7 +15,6 @@ build frontend:
   tags:
     - frontend-runner
   script:
-    - docker stop front
     - docker build -t front:latest .
 
 deploy frontend:
