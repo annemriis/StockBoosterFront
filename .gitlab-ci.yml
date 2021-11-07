@@ -28,8 +28,5 @@ deploy frontend:
   tags:
     - frontend-runner
   script:
-    - mkdir -p ~/front-deployment
-    - rm -rf ~/front-deployment/*
-    - cp -r /dist/iti0302-front-end ~/front-deployment/
     - docker-compose up -d
 
