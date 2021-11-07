@@ -28,6 +28,7 @@ deploy frontend:
   script:
     - mkdir -p ~/front-deployment
     - rm -rf ~/front-deployment/*
+    - docker stop front
     - docker run -d --name=front front:latest
     - docker ps
     - docker cp front:/app/dist ~/front-deployment/
