@@ -15,8 +15,8 @@ build frontend:
   tags:
     - frontend-runner
   script:
-    - npm assemble
-    - npm build
+    - npm install
+    - npm run build
     - docker build -t front:latest .
 
 deploy frontend:
@@ -30,6 +30,6 @@ deploy frontend:
   script:
     - mkdir -p ~/front-deployment
     - rm -rf ~/front-deployment/*
-    - cp /dist/iti0302-front-end ~/front-deployment/
+    - cp -r /dist/iti0302-front-end ~/front-deployment/
     - docker-compose up -d
 
