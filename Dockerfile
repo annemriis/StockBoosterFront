@@ -3,6 +3,7 @@
 # Use official node image as the base image
 FROM node:14.18-alpine as build
 
+
 # Make directory inside docker image and set it as working dir
 RUN mkdir -p /app
 WORKDIR /app
@@ -26,7 +27,16 @@ FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents.
 COPY --from=build /app/dist /usr/share/nginx/html
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# RUN sudo apt-get update \
+#      && apt-get install -y python-3-certbot-nginx \
+#      && certbot --nginx --non-interactive --agree-tos -m peetertarvas@gmail.com --domains stockbooster.ml \
+
+
+# VOLUME /etc/letsencrypt
+
+CMD [ "sh", "-c", "nginx -g 'daemon off;'" ]
 
 # Expose port 80
 EXPOSE 80
