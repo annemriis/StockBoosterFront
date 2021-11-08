@@ -1,17 +1,20 @@
-# Stage 1: Compile and Build angular codebase
 
-# Use official node image as the base image
-FROM node:14.18-alpine as build
 
-RUN mkdir -p /app
-WORKDIR /app
-COPY package.json /app
-RUN npm install -g npm-install-peers
-RUN npm install
-COPY . /app
-RUN npm run build --prod
+# Use official nginx image as the base image
+FROM nginx:latest
 
-# add gitlab runner t docker gruop 'sudo usermod -a -G docker gitlab-runner'
+# Copy the build output to replace the default nginx contents.
+COPY  /dist/ /usr/share/nginx/html
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# RUN sudo apt-get update \
+#      && apt-get install -y python-3-certbot-nginx \
+#      && certbot --nginx --non-interactive --agree-tos -m peetertarvas@gmail.com --domains stockbooster.ml \
+
+
+# VOLUME /etc/letsencrypt
+
+CMD [ "sh", "-c", "nginx -g 'daemon off;'" ]
 
 
 

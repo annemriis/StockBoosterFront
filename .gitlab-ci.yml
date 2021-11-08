@@ -15,21 +15,18 @@ build frontend:
   tags:
     - frontend-runner
   script:
-    - docker stop front
-    - docker rm -f front
+    - npm install
+    - npm run build
     - docker build -t front:latest .
 
 deploy frontend:
   stage: deploy
   only:
     refs:
-      - 46-dokerize-front-end
+      - 49-fix-front-end-docker
       - main # only branch to be deployed
   tags:
     - frontend-runner
   script:
-    - mkdir -p ~/front-deployment
-    - rm -rf ~/front-deployment/*
-    - docker run -d --name=front front:latest
-    - docker ps
-    - docker cp front:/app/dist ~/front-deployment/
+    - docker-compose up -d
+
