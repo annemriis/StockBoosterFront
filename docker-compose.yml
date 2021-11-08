@@ -8,7 +8,8 @@ services:
      - "80:80"
     restart: always
     networks:
-      - mynet
+      mynet:
+        ipv4_address: 10.5.0.5
 
   API:
     image: bootdocker:staging
@@ -25,8 +26,8 @@ services:
       - AWS_REGION=local
       - ENVIRONMENT=local
     networks:
-      - mynet
-
+      mynet:
+          ipv4_address: 10.5.0.6
   db:
     image: postgres:latest
     container_name: "postgres"
@@ -48,4 +49,8 @@ services:
 networks:
   mynet:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/16
+          gateway: 10.5.0.1
 

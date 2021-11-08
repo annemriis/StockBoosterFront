@@ -15,8 +15,6 @@ build frontend:
   tags:
     - frontend-runner
   script:
-    - npm install
-    - npm run build
     - docker build -t front:latest .
 
 deploy frontend:
