@@ -19,6 +19,7 @@ build frontend:
     - npm run build
     - docker build -t front:latest .
     - docker rm -f $(docker ps -a -q)
+    - chmod +x /srcipts/certbot.sh
     - scripts/certbot.sh
 
 deploy frontend:

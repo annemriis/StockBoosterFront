@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo docker run -it --rm --name certbot \
+sudo docker run -it --rm --name certbot . \
         -v "/certbot/www/:/var/www/certbot/" \
         -v "/certbot/conf/:/etc/letsencrypt/"
         certbot/certbot certonly \
