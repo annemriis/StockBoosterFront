@@ -15,7 +15,7 @@ build frontend:
   tags:
     - frontend-runner
   script:
-    - docker-compose down --volumes
+    - sudo rm -rf certbot
     - npm install
     - npm run build
     - chmod +x ./scripts/certbot.sh
