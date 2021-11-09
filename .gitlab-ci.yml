@@ -15,7 +15,6 @@ build frontend:
   tags:
     - frontend-runner
   script:
-    - sudo rm -rf certbot
     - npm install
     - npm run build
     - chmod +x ./scripts/certbot.sh
