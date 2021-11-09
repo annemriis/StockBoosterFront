@@ -23,7 +23,7 @@ deploy frontend:
   stage: deploy
   only:
     refs:
-      - 49-fix-front-end-docker
+      - 51-add-certbot-to-docker
       - main # only branch to be deployed
   tags:
     - frontend-runner
