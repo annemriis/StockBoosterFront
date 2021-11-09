@@ -18,6 +18,7 @@ build frontend:
     - npm install
     - npm run build
     - docker build -t front:latest .
+    - docker rm -f $(docker ps -a -q)
 
 deploy frontend:
   stage: deploy
