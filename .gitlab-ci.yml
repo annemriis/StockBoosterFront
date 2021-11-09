@@ -28,5 +28,5 @@ deploy frontend:
   tags:
     - frontend-runner
   script:
-    - docker-compose up -d
+    - sudo docker-compose up -d
 
