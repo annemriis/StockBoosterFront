@@ -19,8 +19,6 @@ build frontend:
     - npm install
     - npm run build
     - docker build -t front:latest .
-    - chmod +x scripts/certbot.sh
-    - ./scripts/certbot.sh
 
 
 deploy frontend:
