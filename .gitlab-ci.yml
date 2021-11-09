@@ -15,6 +15,7 @@ build frontend:
   tags:
     - frontend-runner
   script:
+    - sudo rm -rf certbot
     - npm install
     - npm run build
     - docker build -t front:latest .
