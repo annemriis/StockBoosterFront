@@ -9,6 +9,8 @@ services:
      - "443:443"
     networks:
       - mynet
+    volumes:
+      - /etc/letsencrypt/:/etc/letsencrypt/
   API:
     image: bootdocker:staging
     container_name: "back"
