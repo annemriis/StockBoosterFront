@@ -10,7 +10,7 @@ services:
      - "80:80"
      - "443:443"
     networks:
-      - mynet
+      - net
     volumes:
       -  /etc/letsencrypt:/etc/letsencrypt
 
@@ -30,7 +30,7 @@ services:
       - AWS_REGION=local
       - ENVIRONMENT=local
     networks:
-      - mynet
+      - net
 
   db:
     image: postgres:latest
@@ -48,10 +48,10 @@ services:
       interval: 10s
       retries: 10
     networks:
-      - mynet
+      - net
 
 networks:
-  mynet:
+  net:
     driver: bridge
 
 
