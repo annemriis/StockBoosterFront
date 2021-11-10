@@ -133,8 +133,9 @@ deploy frontend:
 
 ## Https
 
- - Connect to server with `ssh ubuntu@13.48.85.253`
- - Navigate to `ubuntu@ip-172-31-11-163:/etc/nginx/sites-available`
- - Run `sudo apt install python3-certbot-nginx`
- - Run `sudo certbot –-nginx`
- - Complete the setup
+  - get certbot using this
+  - Connect to server with `ssh ubuntu@13.48.85.253`
+  - Navigate to `ubuntu@ip-172-31-11-163:/etc/nginx/sites-available`
+  - Run `sudo apt install python3-certbot-nginx`
+  - Run `sudo certbot –-nginx`
+  - Complete the setup
