@@ -17,10 +17,7 @@
   - Run `npm i` to install npm modules
   - Run `ng serve` to start front-end
   - Navigate to `http://localhost:4200/`
-
-## How to server (mis see täpselt on?)
-
-  - npm run build
+  
 
 ## Virtual memory
 
@@ -133,7 +130,7 @@ deploy frontend:
 
 ## Https
 
-  - get certbot using this
+  - get certbot using this https://certbot.eff.org/lets-encrypt/ubuntufocal-other
   - Connect to server with `ssh ubuntu@13.48.85.253`
   - Navigate to `ubuntu@ip-172-31-11-163:/etc/nginx/sites-available`
   - Run `sudo apt install python3-certbot-nginx`
