@@ -15,15 +15,17 @@ build frontend:
   tags:
     - frontend-runner
   script:
+    - docker-compose down
     - npm install
     - npm run build
     - docker build -t front:latest .
+
 
 deploy frontend:
   stage: deploy
   only:
     refs:
-      - 49-fix-front-end-docker
+      - 51-add-certbot-to-docker
       - main # only branch to be deployed
   tags:
     - frontend-runner
