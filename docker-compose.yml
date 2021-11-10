@@ -16,7 +16,7 @@ services:
 
   certbot:
     image: certbot/certbot:latest
-    command: certonly --webroot --webroot-path=/dist/iti0302-front-end --email petarv@ttu.ee --agree-tos --no-eff-email -d stockbooster.ml -d stockbooster.ml
+    command: certonly --webroot --webroot-path=/var/www/certbot --email petarv@ttu.ee --agree-tos --no-eff-email -d stockbooster.ml -d stockbooster.ml
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/logs:/var/log/letsencrypt
