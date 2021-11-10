@@ -4,6 +4,8 @@ services:
   front:
     container_name: "front"
     image: front:latest
+    depends_on:
+      - API
     ports:
      - "80:80"
      - "443:443"
@@ -29,7 +31,6 @@ services:
       - ENVIRONMENT=local
     networks:
       - mynet
-    restart: always
 
   db:
     image: postgres:latest
@@ -46,9 +47,9 @@ services:
       timeout: 45s
       interval: 10s
       retries: 10
-    restart: always
     networks:
       - mynet
+
 networks:
   mynet:
     driver: bridge
