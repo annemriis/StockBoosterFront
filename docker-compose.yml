@@ -10,7 +10,17 @@ services:
     networks:
       - mynet
     volumes:
-      - /etc/letsencrypt/:/etc/letsencrypt/
+      - ./dist/iti0302-front-end:/usr/share/nginx/html
+      - ./certbot/conf:/etc/nginx/ssl
+      - ./certbot/data:/var/www/certbot
+
+  certbot:
+    image: certbot/certbot:latest
+    command: certonly --webroot --webroot-path=./dist/iti0302-front-end/var/www/certbot --email petarv@ttu.ee --agree-tos --no-eff-email -d stockbooster.ml -d stockbooster.ml
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/logs:/var/log/letsencrypt
+      - ./certbot/data:/var/www/certbot
   API:
     image: bootdocker:staging
     container_name: "back"
