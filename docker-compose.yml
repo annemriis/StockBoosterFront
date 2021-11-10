@@ -12,7 +12,7 @@ services:
     networks:
       - mynet
     volumes:
-      -  /etc/letsencrypt/live/:/etc/letsencrypt/live/
+      -  /etc/letsencrypt:/etc/letsencrypt
 
   API:
     image: bootdocker:staging
