@@ -130,7 +130,8 @@ deploy frontend:
 
 ## Https
 
-  - get certbot using this https://certbot.eff.org/lets-encrypt/ubuntufocal-other
+  - get certbot using this https://certbot.eff.org/lets-encrypt/ubuntufocal-other(need to su to gitlab-runner and also after getting certbot need to chmod sudo chmod 755 /etc/letsencrypt/live/)
+  - need to change sudo visodo file so that gitlab-runner can run everything
   - Connect to server with `ssh ubuntu@13.48.85.253`
   - Navigate to `ubuntu@ip-172-31-11-163:/etc/nginx/sites-available`
   - Run `sudo apt install python3-certbot-nginx`
