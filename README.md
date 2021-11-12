@@ -82,7 +82,7 @@ build frontend:
       - dist
   tags:
     - frontend-runner
-  script:
+  scripts:
     - chmod +x scripts/clearDocker.sh
     - ./scripts/clearDocker.sh
     - npm install
@@ -98,7 +98,7 @@ deploy frontend:
       - main # only branch to be deployed
   tags:
     - frontend-runner
-  script:
+  scripts:
     - docker-compose up -d
 
 ```
