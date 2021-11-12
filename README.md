@@ -66,13 +66,14 @@ echo "deb-src [signed-by=$KEYRING] https://deb.nodesource.com/$VERSION $DISTRO m
  - Following code is added to the frontend `.gitlab-ci.yml` file
 
 ```bash
+
 stages:
   - build
   - deploy
 
 build frontend:
   stage: build
-  image: node:12-alpine
+  image: node:14.18-alpine
   cache:
     paths:
       - node_modules
@@ -81,44 +82,26 @@ build frontend:
       - dist
   tags:
     - frontend-runner
-  script:
+  scripts:
+    - chmod +x scripts/clearDocker.sh
+    - ./scripts/clearDocker.sh
     - npm install
     - npm run build
+    - docker build -t front:latest .
+
 
 deploy frontend:
   stage: deploy
   only:
     refs:
+      - 52-update-gitlab-runner
       - main # only branch to be deployed
   tags:
     - frontend-runner
-  script:
-    - mkdir -p ~/front-deployment
-    - rm -rf ~/front-deployment/*
-    - cp -r dist/. ~/front-deployment
-```
+  scripts:
+    - docker-compose up -d
 
-## Nginx
-
- - Go to root `cd /`
- - Install Nginx with `sudo apt-get install nginx`
- - Modify the existing file (`default`) in `/etc/nginx/sites-available/` by removing comments
- - Go to `/var/www/`
- - Create a symlink from `/home/gitlab-runner/front-deployment/` to `/var/www/front-deployment` with `sudo ln -s /home/gitlab-runner/front-deployment/ /var/www/front-deployment`
- - Go to `/etc/nginx/sites-available/`
- - Enter `sudo nano default` and change the root to `/var/www/front-deployment`
- - Go to `etc/nginx/sites-enabled/` and remove `default-copy` with `sudo rm default-copy`
- - Restart Nginx `sudo service nginx restart`
- - Enter `sudo nano default` remove the index file and change the location to:
-```bash
-   location / {
-        index  index.html index.htm;
-        if (!-e $request_filename){
-          rewrite ^(.*)$ /index.html break;
-        }
-    }
 ```
- - Restart Nginx `sudo service nginx restart`
 
 ## Domain
 
@@ -132,8 +115,4 @@ deploy frontend:
 
   - get certbot using this https://certbot.eff.org/lets-encrypt/ubuntufocal-other(need to su to gitlab-runner and also after getting certbot need to chmod sudo chmod 755 /etc/letsencrypt/live/)
   - need to change sudo visodo file so that gitlab-runner can run everything
-  - Connect to server with `ssh ubuntu@13.48.85.253`
-  - Navigate to `ubuntu@ip-172-31-11-163:/etc/nginx/sites-available`
-  - Run `sudo apt install python3-certbot-nginx`
-  - Run `sudo certbot –-nginx`
   - Complete the setup

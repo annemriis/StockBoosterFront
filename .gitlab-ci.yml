@@ -15,7 +15,8 @@ build frontend:
   tags:
     - frontend-runner
   script:
-    - docker-compose down
+    - chmod +x scripts/clearDocker.sh
+    - ./scripts/clearDocker.sh
     - npm install
     - npm run build
     - docker build -t front:latest .
@@ -25,7 +26,7 @@ deploy frontend:
   stage: deploy
   only:
     refs:
-      - 51-add-certbot-to-docker
+      - 52-update-gitlab-runner
       - main # only branch to be deployed
   tags:
     - frontend-runner
