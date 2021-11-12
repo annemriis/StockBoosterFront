@@ -7,10 +7,6 @@ FROM nginx:latest
 COPY  /dist/ /usr/share/nginx/html
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
 
-# RUN sudo apt-get update \
-#      && apt-get install -y python-3-certbot-nginx \
-#      && certbot --nginx --non-interactive --agree-tos -m peetertarvas@gmail.com --domains stockbooster.ml \
-
 
 # VOLUME /etc/letsencrypt
 
