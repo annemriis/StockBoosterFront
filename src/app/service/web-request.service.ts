@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, from, ObservedValueOf} from "rxjs";
-import {StockInterface} from "./Interface/StockInterface";
+import {StockInterface} from "../Interface/StockInterface";
 
 // All request methods.
 

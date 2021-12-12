@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {ChartOptions, ChartType} from "chart.js";
 import {Color, Label} from "ng2-charts";
-import {StockGuiServiceService} from "./stock-gui-service.service";
+import {StockGuiServiceService} from "../../../service/stock-gui-service.service";
 
 
 @Component({
