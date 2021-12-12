@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {LoginRequest} from "../../model/login-request";
 
 @Component({
   selector: 'app-login',
@@ -23,7 +24,10 @@ export class LoginComponent implements OnInit {
     if (this.loginForm?.invalid) {
       return;
     }
-    console.log(this.loginForm?.value)
+    console.log(this.loginForm.value)
+    const { username, password } = this.loginForm.value
+    const loginRequest = new LoginRequest(username, password);
+    console.log(loginRequest)
   }
 
   public hasError = (controlName: string, errorName: string) => {
