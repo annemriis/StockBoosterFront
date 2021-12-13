@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LoginRequest} from "../../model/login-request";
-import {UserService} from "../../service/user.service";
 import {first} from "rxjs/operators";
 import {LoginResponse} from "../../model/login-response";
+import {AuthenticationService} from "../../service/authentication.service";
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private formBuilder: FormBuilder,
-              private userService: UserService) {
+              private authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     const {username, password} = this.loginForm.value
     const loginRequest = new LoginRequest(username, password);
     console.log(loginRequest)
-    this.userService.login(loginRequest)
+    this.authenticationService.login(loginRequest)
       .pipe(first())
       .subscribe((response: LoginResponse) => {
         console.log(response)
