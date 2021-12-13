@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpHeaders} from "@angular/common/http";
+import {LoginRequest} from "../model/login-request";
+import {Observable} from "rxjs";
+import {WebRequestService} from "./web-request.service";
+import {LoginResponse} from "../model/login-response";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  httpOptions = {
-    headers: new HttpHeaders({'content-type': 'application/json'} )
-  };
+  constructor(private webRequestService: WebRequestService) { }
 
-  constructor() { }
+  login(loginRequest: LoginRequest): Observable<LoginResponse> {
+    return this.webRequestService.postRequest('api/users/login', loginRequest)
+  }
 }

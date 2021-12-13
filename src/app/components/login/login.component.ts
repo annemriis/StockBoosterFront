@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {LoginRequest} from "../../model/login-request";
+import {UserService} from "../../service/user.service";
+import {first} from "rxjs/operators";
+import {LoginResponse} from "../../model/login-response";
 
 @Component({
   selector: 'app-login',
@@ -14,23 +17,31 @@ export class LoginComponent implements OnInit {
     password: ['', Validators.required]
   });
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private userService: UserService) {
   }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
-    if (this.loginForm?.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
     console.log(this.loginForm.value)
-    const { username, password } = this.loginForm.value
+    const {username, password} = this.loginForm.value
     const loginRequest = new LoginRequest(username, password);
     console.log(loginRequest)
+    this.userService.login(loginRequest)
+      .pipe(first())
+      .subscribe((response: LoginResponse) => {
+        console.log(response)
+      }, (response: LoginResponse) => {
+        console.log(response);
+      });
   }
 
   public hasError = (controlName: string, errorName: string) => {
-    return this.loginForm?.controls[controlName].hasError(errorName);
+    return this.loginForm.controls[controlName].hasError(errorName);
   }
 }
