@@ -4,12 +4,14 @@
   <div class="search" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
     <mat-form-field color="primary" appearance="outline">
       <mat-label>Enter a stock symbol</mat-label>
-      <input matInput #symbol/>
+      <input matInput #symbol name="form"/>
     </mat-form-field>
     <button mat-button (click)="getStockData(symbol.value)">Search</button>
   </div>
 
-  <app-stock-graphical-interface *ngIf="hasSubmitted"
+  <span fxLayout="row" fxLayoutAlign="center center" class="error-message" *ngIf="hasSubmitted&&throwError">Enter a valid symbol!</span>
+
+  <app-stock-graphical-interface *ngIf="hasSubmitted && !throwError"
                                  [symbol]="stockGUIService.symbol"
                                  [open]="stockGUIService.open"
                                  [high]="stockGUIService.high"
