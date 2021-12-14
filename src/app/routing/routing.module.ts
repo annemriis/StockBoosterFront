@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'stock', component: StockComponent},
   { path: 'about-us', component: AboutUsComponent},
   { path: 'compare-stock', component: CompareStockComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent}, // add canActivate: [AuthGuard] for pages that need to be private
 
 ];
 @NgModule({

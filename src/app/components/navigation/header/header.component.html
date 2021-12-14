@@ -18,7 +18,7 @@
       </li>
     </ul>
   </div>
-  <div fxFlex="40px" fxLayout fxLayoutAlign="end">
+  <div *ngIf="!authenticationService.getCurrentUserValue" fxFlex="40px" fxLayout fxLayoutAlign="end">
     <a routerLink="/login">Log In</a>
   </div>
 </mat-toolbar>

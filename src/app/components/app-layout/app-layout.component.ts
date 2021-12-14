@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {WebRequestService} from "../../web-request.service";
-import {TaskService} from "../../task.service";
-import {StockGuiServiceService} from "../stock-graphical-interface/stock-graphical-interface/stock-gui-service.service";
+import {WebRequestService} from "../../service/web-request.service";
+import {TaskService} from "../../service/task.service";
+import {StockGuiServiceService} from "../../service/stock-gui-service.service";
 import {StockInterface} from "../../Interface/StockInterface";
 
 @Component({
