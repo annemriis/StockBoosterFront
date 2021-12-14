@@ -20,6 +20,10 @@ export class AuthenticationService {
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
+  public get getCurrentUserValue(): LoginResponse | undefined {
+    return this.currentUserSubject ? this.currentUserSubject.value : undefined
+  }
+
   login(loginRequest: LoginRequest): Observable<LoginResponse> {
     return this.userService.login(loginRequest)
       .pipe(map((loginResponse: LoginResponse) => {

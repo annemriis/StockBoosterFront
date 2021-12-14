@@ -14,7 +14,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { StockComponent } from './components/stock/stock.component';
 import { MoraleComponent } from './components/morale/morale.component';
-import { HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import {FooterComponent} from "./components/footer/footer.component";
 import {MatFormFieldModule} from "@angular/material/form-field";
@@ -27,6 +27,7 @@ import { ChartsModule } from 'ng2-charts';
 import { StockGraphicalInterfaceComponent } from './components/stock-graphical-interface/stock-graphical-interface/stock-graphical-interface.component';
 import { CompareStockComponent } from './components/compare-stock/compare-stock.component';
 import { LoginComponent } from './components/login/login.component';
+import {JwtInterceptor} from "./helpers/jwt.interceptor";
 
 
 
@@ -64,7 +65,9 @@ import { LoginComponent } from './components/login/login.component';
     MatTableModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
