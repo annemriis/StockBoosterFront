@@ -12,6 +12,6 @@ export class UserService {
   constructor(private webRequestService: WebRequestService) { }
 
   login(loginRequest: LoginRequest): Observable<LoginResponse> {
-    return this.webRequestService.postRequest('api/users/login', loginRequest)
+    return this.webRequestService.postRequest('users/login', loginRequest)
   }
 }
