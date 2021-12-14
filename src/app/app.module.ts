@@ -28,6 +28,7 @@ import { StockGraphicalInterfaceComponent } from './components/stock-graphical-i
 import { CompareStockComponent } from './components/compare-stock/compare-stock.component';
 import { LoginComponent } from './components/login/login.component';
 import {JwtInterceptor} from "./helpers/jwt.interceptor";
+import {ErrorInterceptor} from "./helpers/error.interceptor";
 
 
 
@@ -66,7 +67,8 @@ import {JwtInterceptor} from "./helpers/jwt.interceptor";
     ChartsModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })
