@@ -48,6 +48,11 @@ export class StockGuiServiceService {
 
   buildStockInfoWithInterface(stockInterface: StockInterface, secondValue: boolean) {
     if (stockInterface.symbol != null) {
+      if (!secondValue) {
+        this.gotResponse = true;
+      } else {
+        this.gotResponse2 = true;
+      }
       this.secondValue = secondValue;
       this.setSymbol(stockInterface.symbol)
       this.setOpen(stockInterface.open)
@@ -67,19 +72,13 @@ export class StockGuiServiceService {
         "lastDate": this.lastDate ? this.lastDate : "", "stockDateInfo": this.stockDateInfo ? this.stockDateInfo : [],
         "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],}];
       this.isBuilding();
-      if (!secondValue) {
-        this.gotResponse = true;
-      } else {
-        this.gotResponse2 = true;
-      }
-      return this;
     } else {
       if (!secondValue) {
         this.gotResponse = false;
       } else {
         this.gotResponse2 = false;
       }
-      return this;
+      this.isBuilding()
     }
   }
 
