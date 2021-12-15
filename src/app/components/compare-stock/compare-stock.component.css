@@ -35,6 +35,18 @@ app-stock-graphical-interface {
   width: 100%;
 }
 
+.error-message {
+  color: orangered;
+  margin-top: -6%;
+  margin-left: 4%;
+}
+
+.error-message2 {
+  color: orangered;
+  margin-top: -5.85%;
+  margin-left: 12%;
+}
+
 @media only screen and (max-width: 600px) {
   .compare-stock-container {
     width: 18rem;

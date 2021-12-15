@@ -35,6 +35,12 @@ app-stock-graphical-interface {
   width: 100%;
 }
 
+.error-message {
+  color: orangered;
+  margin-top: -7%;
+  margin-left: -33%;
+}
+
 @media only screen and (max-width: 600px) {
   .morale-container {
     width: 18rem;

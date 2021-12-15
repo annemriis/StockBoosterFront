@@ -24,7 +24,7 @@ export class StockGuiServiceService {
   lineChartData: [{data: number[], label: string}]; lineChartData2: [{data: number[], label: string}]
   lineChartLabels: string[]; lineChartLabels2: string[]
   secondValue: boolean;
-  gotResponse: boolean = true;
+  gotResponse: boolean = true; gotResponse2: boolean = true;
 
 
   constructor() {
@@ -48,6 +48,11 @@ export class StockGuiServiceService {
 
   buildStockInfoWithInterface(stockInterface: StockInterface, secondValue: boolean) {
     if (stockInterface.symbol != null) {
+      if (!secondValue) {
+        this.gotResponse = true;
+      } else {
+        this.gotResponse2 = true;
+      }
       this.secondValue = secondValue;
       this.setSymbol(stockInterface.symbol)
       this.setOpen(stockInterface.open)
@@ -67,10 +72,13 @@ export class StockGuiServiceService {
         "lastDate": this.lastDate ? this.lastDate : "", "stockDateInfo": this.stockDateInfo ? this.stockDateInfo : [],
         "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],}];
       this.isBuilding();
-      return this;
     } else {
-      this.gotResponse = false;
-      return this;
+      if (!secondValue) {
+        this.gotResponse = false;
+      } else {
+        this.gotResponse2 = false;
+      }
+      this.isBuilding()
     }
   }
 

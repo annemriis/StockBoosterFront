@@ -18,6 +18,7 @@ export class MoraleComponent implements OnInit {
   }
 
   hasSubmitted: boolean = false;
+  throwError: boolean = false;
   stockInterface!: StockInterface
   dataSource = [{"symbol": "", "open": 0, "close": 0,"high": 0,"volume": 0,"lastDate": "", "stockDateInfo": [""],
     "stockCloseInfo": [0]}];
@@ -26,11 +27,16 @@ export class MoraleComponent implements OnInit {
   getStockData = (symbol: string) => {
     this.taskService.getMoralBoostStock(symbol.toUpperCase()).subscribe((data) => {
       this.stockInterface = data
-      this.stockGUIService.buildStockInfoWithInterface(data, false)
-      this.dataSource = this.stockGUIService.dataSource
-      this.hasSubmitted = true;
+      this.stockGUIService.buildStockInfoWithInterface(this.stockInterface, false)
+      if (this.stockGUIService.gotResponse) {
+        this.throwError = false;
+        this.dataSource = this.stockGUIService.dataSource
+        this.hasSubmitted = true;
+      } else {
+        this.throwError = true;
+        this.hasSubmitted = true;
+      }
     });
-    // Need to implement something for the case where the given stock symbol doesn't exist
   }
 
   ngOnInit(): void {

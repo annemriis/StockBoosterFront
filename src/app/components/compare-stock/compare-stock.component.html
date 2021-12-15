@@ -14,7 +14,10 @@
     </mat-form-field>
     <button mat-button (click)="getStockData(text.value)">Search</button>
   </div>
-  <app-stock-graphical-interface *ngIf="hasSubmitted"
+
+  <span fxLayout="row" fxLayoutAlign="start center" class="error-message" *ngIf="hasSubmitted && throwError">Enter a valid symbol!</span>
+
+  <app-stock-graphical-interface *ngIf="hasSubmitted && !throwError"
                                  [symbol]="stockGUIService.symbol"
                                  [open]="stockGUIService.open"
                                  [high]="stockGUIService.high"
@@ -27,7 +30,8 @@
                                  [lineChartData]="stockGUIService.lineChartData"
                                  [lineChartLabels]="stockGUIService.lineChartLabels">
   </app-stock-graphical-interface>
-  <app-stock-graphical-interface *ngIf="hasSubmitted2"
+
+  <app-stock-graphical-interface *ngIf="hasSubmitted2 && !throwError2"
                                  [symbol]="stockGUIService.symbol2"
                                  [open]="stockGUIService.open2"
                                  [high]="stockGUIService.high2"
@@ -40,5 +44,7 @@
                                  [lineChartData]="stockGUIService.lineChartData2"
                                  [lineChartLabels]="stockGUIService.lineChartLabels2">
   </app-stock-graphical-interface>
+
+  <span fxLayout="row" fxLayoutAlign="center center" class="error-message2" *ngIf="hasSubmitted2 && throwError2">Enter a valid symbol!</span>
 
 </div>
