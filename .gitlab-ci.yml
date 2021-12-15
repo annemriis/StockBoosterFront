@@ -26,7 +26,7 @@ deploy frontend:
   stage: deploy
   only:
     refs:
-      - 61-try-fix-login
+      - 60-user-stays-logged-in
       - main # only branch to be deployed
   tags:
     - frontend-runner
