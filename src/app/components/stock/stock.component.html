@@ -9,7 +9,7 @@
     <button mat-button (click)="getStockData(symbol.value)">Search</button>
   </div>
 
-  <span fxLayout="row" fxLayoutAlign="center center" class="error-message" *ngIf="hasSubmitted&&throwError">Enter a valid symbol!</span>
+  <span fxLayout="row" fxLayoutAlign="center center" class="error-message" *ngIf="hasSubmitted && throwError">Enter a valid symbol!</span>
 
   <app-stock-graphical-interface *ngIf="hasSubmitted && !throwError"
                                  [symbol]="stockGUIService.symbol"

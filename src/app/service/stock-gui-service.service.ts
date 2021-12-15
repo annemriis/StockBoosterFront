@@ -67,6 +67,7 @@ export class StockGuiServiceService {
         "lastDate": this.lastDate ? this.lastDate : "", "stockDateInfo": this.stockDateInfo ? this.stockDateInfo : [],
         "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],}];
       this.isBuilding();
+      this.gotResponse = true;
       return this;
     } else {
       this.gotResponse = false;
