@@ -4,7 +4,7 @@ import {LoginRequest} from "../../model/login-request";
 import {first} from "rxjs/operators";
 import {LoginResponse} from "../../model/login-response";
 import {AuthenticationService} from "../../service/authentication.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -17,18 +17,15 @@ export class LoginComponent implements OnInit {
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
-  returnUrl: string = '/'
 
   constructor(private formBuilder: FormBuilder,
               private authenticationService: AuthenticationService,
-              private router: Router,
-              private route: ActivatedRoute) {
+              private router: Router) {
   }
 
   ngOnInit(): void {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/'
     if (this.authenticationService.getCurrentUserValue) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/profile']);
     }
   }
 
@@ -44,7 +41,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe((response: LoginResponse) => {
         console.log(response)
-        this.router.navigate([this.returnUrl])
+        this.router.navigate(['/profile'])
       }, (response: LoginResponse) => {
         console.log(response);
       });
