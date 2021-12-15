@@ -24,7 +24,7 @@ export class StockGuiServiceService {
   lineChartData: [{data: number[], label: string}]; lineChartData2: [{data: number[], label: string}]
   lineChartLabels: string[]; lineChartLabels2: string[]
   secondValue: boolean;
-  gotResponse: boolean = true;
+  gotResponse: boolean = true; gotResponse2: boolean = true;
 
 
   constructor() {
@@ -67,10 +67,18 @@ export class StockGuiServiceService {
         "lastDate": this.lastDate ? this.lastDate : "", "stockDateInfo": this.stockDateInfo ? this.stockDateInfo : [],
         "stockCloseInfo": this.stockCloseInfo ? this.stockCloseInfo : [],}];
       this.isBuilding();
-      this.gotResponse = true;
+      if (!secondValue) {
+        this.gotResponse = true;
+      } else {
+        this.gotResponse2 = true;
+      }
       return this;
     } else {
-      this.gotResponse = false;
+      if (!secondValue) {
+        this.gotResponse = false;
+      } else {
+        this.gotResponse2 = false;
+      }
       return this;
     }
   }

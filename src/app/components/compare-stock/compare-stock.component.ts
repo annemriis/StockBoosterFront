@@ -44,7 +44,7 @@ export class CompareStockComponent implements OnInit {
     this.taskService.getStock(symbol.toUpperCase()).subscribe((data) => {
       this.stockInterface = data
       this.stockGUIService.buildStockInfoWithInterface(this.stockInterface, true)
-      if (this.stockGUIService.gotResponse) {
+      if (this.stockGUIService.gotResponse2) {
         this.throwError2 = false;
         this.dataSource = this.stockGUIService.dataSource
         this.hasSubmitted2 = true;
