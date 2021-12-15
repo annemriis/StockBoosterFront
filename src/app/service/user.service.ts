@@ -16,7 +16,7 @@ export class UserService {
     return this.webRequestService.postRequest('users/login', loginRequest)
   }
 
-  register(registerRequest: RegisterRequest): Observable<LoginResponse> {
+  register(registerRequest: RegisterRequest): Observable<any> {
     return this.webRequestService.postRequest('users/register', registerRequest)
   }
 }

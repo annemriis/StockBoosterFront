@@ -35,13 +35,12 @@ export class RegisterComponent implements OnInit {
     if (this.registerForm.invalid) {
       return;
     }
-    console.log(this.registerForm.value)
     const {username, password} = this.registerForm.value
     const registerRequest = new RegisterRequest(username, password);
     console.log(registerRequest)
     this.userService.register(registerRequest)
       .pipe(first())
-      .subscribe((response: LoginResponse) => {
+      .subscribe((response: any) => {
         console.log(response)
         this.router.navigate(['/login'])
       }, (response: LoginResponse) => {
