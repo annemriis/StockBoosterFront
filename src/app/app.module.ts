@@ -29,6 +29,7 @@ import { CompareStockComponent } from './components/compare-stock/compare-stock.
 import { LoginComponent } from './components/login/login.component';
 import {JwtInterceptor} from "./helpers/jwt.interceptor";
 import {ErrorInterceptor} from "./helpers/error.interceptor";
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -44,7 +45,8 @@ import {ErrorInterceptor} from "./helpers/error.interceptor";
     CompareStockComponent,
     StockGraphicalInterfaceComponent,
     FooterComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

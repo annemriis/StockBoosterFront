@@ -21,4 +21,7 @@
   <div *ngIf="!authenticationService.getCurrentUserValue" fxFlex="40px" fxLayout fxLayoutAlign="end">
     <a routerLink="/login">Log In</a>
   </div>
+  <div *ngIf="authenticationService.getCurrentUserValue" fxFlex="40px" fxLayout fxLayoutAlign="end">
+    <a routerLink="/profile">Profile</a>
+  </div>
 </mat-toolbar>
