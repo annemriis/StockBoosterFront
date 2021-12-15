@@ -79,7 +79,6 @@ export class StockGuiServiceService {
       } else {
         this.gotResponse2 = false;
       }
-      this.isBuilding()
       return this;
     }
   }
