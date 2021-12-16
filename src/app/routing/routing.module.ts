@@ -9,6 +9,7 @@ import {CompareStockComponent} from "../components/compare-stock/compare-stock.c
 import {LoginComponent} from "../components/login/login.component";
 import {ProfileComponent} from "../components/profile/profile.component";
 import {AuthGuard} from "../helpers/auth.guard";
+import {RegisterComponent} from "../components/register/register.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/app-layout', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'compare-stock', component: CompareStockComponent},
   { path: 'login', component: LoginComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}, // add canActivate: [AuthGuard] for pages that need to be private
+  { path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({

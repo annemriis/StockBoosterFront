@@ -30,6 +30,7 @@ import { LoginComponent } from './components/login/login.component';
 import {JwtInterceptor} from "./helpers/jwt.interceptor";
 import {ErrorInterceptor} from "./helpers/error.interceptor";
 import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -46,7 +47,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     StockGraphicalInterfaceComponent,
     FooterComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

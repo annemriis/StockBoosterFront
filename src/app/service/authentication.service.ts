@@ -29,8 +29,10 @@ export class AuthenticationService {
       .pipe(map((loginResponse: LoginResponse) => {
         // store login response together with jwt token in local storage
         // and use currentUserSubject to get current user (current token)
-        localStorage.setItem('currentUser', JSON.stringify(loginResponse));
-        this.currentUserSubject.next(loginResponse);
+        if (loginResponse && loginResponse.token) {
+          localStorage.setItem('currentUser', JSON.stringify(loginResponse));
+          this.currentUserSubject.next(loginResponse);
+        }
         return loginResponse;
       }));
   }
