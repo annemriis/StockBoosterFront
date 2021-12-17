@@ -22,7 +22,7 @@ export class WebRequestService {
   } )
 
 
-  getRequest(url:string): Observable<StockInterface> {
+  getStockRequest(url:string): Observable<StockInterface> {
     return this.http.get<StockInterface>(url, {headers: this.headers});
   }
 

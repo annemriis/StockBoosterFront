@@ -4,7 +4,7 @@
   </div>
   <div fxFlex fxLayout fxLayoutAlign="center center">
     <ul fxFlex fxLayout fxLayout.xs="column" fxLayoutGap.xs ="5" fxLayoutAlign="center" fxLayoutGap="3rem" class="navigation-items">
-      <li>
+      <li *ngIf="authenticationService.getCurrentUserValue">
         <a routerLink="/morale">Boost my morale</a>
       </li>
       <li>

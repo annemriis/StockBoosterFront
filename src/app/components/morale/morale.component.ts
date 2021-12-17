@@ -25,7 +25,7 @@ export class MoraleComponent implements OnInit {
 
 
   getStockData = (symbol: string) => {
-    this.taskService.getMoralBoostStock(symbol.toUpperCase()).subscribe((data) => {
+    this.taskService.getMoraleBoostStock(symbol.toUpperCase()).subscribe((data) => {
       this.stockInterface = data
       this.stockGUIService.buildStockInfoWithInterface(this.stockInterface, false)
       if (this.stockGUIService.gotResponse) {

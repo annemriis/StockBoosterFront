@@ -10,12 +10,12 @@ export class TaskService {
 
   /** GET stock info from the server */
   getStock(symbol: String) {
-    return this.webRequestService.getRequest("api/stock/" + symbol);
+    return this.webRequestService.getStockRequest("api/stock/" + symbol);
   }
 
   /** GET stock info from the server */
-  getMoralBoostStock(symbol: String) {
-    return this.webRequestService.getRequest("api/stock/" + symbol + "/boost-morale");
+  getMoraleBoostStock(symbol: String) {
+    return this.webRequestService.getStockRequest("api/stock/" + symbol + "/boost-morale");
   }
 
 }
