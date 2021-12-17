@@ -18,12 +18,14 @@ export class WebRequestService {
     'Access-Control-Allow-Origin': '*',
     'content-type': 'application/json',
     "Access-Control-Allow-Methods": "GET, POST, PUT",
-
   } )
-
 
   getStockRequest(url:string): Observable<StockInterface> {
     return this.http.get<StockInterface>(url, {headers: this.headers});
+  }
+
+  getMoraleBoostRequest(url:string): Observable<StockInterface> {
+    return this.http.get<StockInterface>(url, {headers: this.headers, withCredentials: true});
   }
 
   postRequest(url: string, body: any) : Observable<any> {

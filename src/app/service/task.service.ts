@@ -15,7 +15,7 @@ export class TaskService {
 
   /** GET stock info from the server */
   getMoraleBoostStock(symbol: String) {
-    return this.webRequestService.getStockRequest("api/stock/" + symbol + "/boost-morale");
+    return this.webRequestService.getMoraleBoostRequest("api/stock/" + symbol + "/boost-morale");
   }
 
 }

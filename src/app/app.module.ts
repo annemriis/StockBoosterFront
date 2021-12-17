@@ -7,7 +7,7 @@ import { AppLayoutComponent } from './components/app-layout/app-layout.component
 import {RouterModule} from "@angular/router";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import { HeaderComponent } from './components/navigation/header/header.component';
+import { HeaderComponent } from './components/navigation/header.component';
 import { RoutingModule } from './routing/routing.module';
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
