@@ -17,7 +17,7 @@ export class WebRequestService {
   headers = new HttpHeaders({
     'Access-Control-Allow-Origin': '*',
     'content-type': 'application/json',
-    "Access-Control-Allow-Methods": "GET, POST, PUT",
+    'Access-Control-Allow-Methods': "GET, POST, PUT"
   } )
 
   getStockRequest(url:string): Observable<StockInterface> {
@@ -25,7 +25,7 @@ export class WebRequestService {
   }
 
   getMoraleBoostRequest(url:string): Observable<StockInterface> {
-    return this.http.get<StockInterface>(url, {headers: this.headers, withCredentials: true});
+    return this.http.get<StockInterface>(url, {headers: this.headers});
   }
 
   postRequest(url: string, body: any) : Observable<any> {
