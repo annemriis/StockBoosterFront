@@ -28,6 +28,7 @@ deploy frontend:
     refs:
       - 62-registration
       - main # only branch to be deployed
+      - 65-error-message-text
   tags:
     - frontend-runner
   script:
