@@ -14,7 +14,7 @@ import {RegisterComponent} from "../components/register/register.component";
 const routes: Routes = [
   { path: '', redirectTo: '/app-layout', pathMatch: 'full' },
   { path: 'app-layout', component: AppLayoutComponent},
-  { path: 'morale', component: MoraleComponent},
+  { path: 'morale', component: MoraleComponent, canActivate: [AuthGuard]},
   { path: 'stock', component: StockComponent},
   { path: 'about-us', component: AboutUsComponent},
   { path: 'compare-stock', component: CompareStockComponent},

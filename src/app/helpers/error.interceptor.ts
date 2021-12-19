@@ -18,6 +18,7 @@ export class ErrorInterceptor implements HttpInterceptor {
       if (err.status == 401) {
         console.log("Unauthorized!")
         //this.authenticationService.logout();
+        // would be ok if exceeding api request limit didn't cause 401 error as well, don't want to log out because of it
       }
 
       const error = err.error.message || err.statusText;

@@ -17,12 +17,14 @@ export class WebRequestService {
   headers = new HttpHeaders({
     'Access-Control-Allow-Origin': '*',
     'content-type': 'application/json',
-    "Access-Control-Allow-Methods": "GET, POST, PUT",
-
+    'Access-Control-Allow-Methods': "GET, POST, PUT"
   } )
 
+  getStockRequest(url:string): Observable<StockInterface> {
+    return this.http.get<StockInterface>(url, {headers: this.headers});
+  }
 
-  getRequest(url:string): Observable<StockInterface> {
+  getMoraleBoostRequest(url:string): Observable<StockInterface> {
     return this.http.get<StockInterface>(url, {headers: this.headers});
   }
 

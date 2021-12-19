@@ -26,7 +26,7 @@ deploy frontend:
   stage: deploy
   only:
     refs:
-      - 62-registration
+      - 64-morale-booster-user-access
       - main # only branch to be deployed
       - 65-error-message-text
   tags:
