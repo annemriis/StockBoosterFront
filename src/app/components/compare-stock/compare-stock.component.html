@@ -15,7 +15,7 @@
     <button mat-button (click)="getStockData(text.value)">Search</button>
   </div>
 
-  <span fxLayout="row" fxLayoutAlign="start center" class="error-message" *ngIf="hasSubmitted && throwError">Enter a valid symbol!</span>
+  <span fxLayout="row" fxLayoutAlign="start center" class="error-message" *ngIf="hasSubmitted && throwError">Stock was not found!</span>
 
   <app-stock-graphical-interface *ngIf="hasSubmitted && !throwError"
                                  [symbol]="stockGUIService.symbol"
@@ -45,6 +45,6 @@
                                  [lineChartLabels]="stockGUIService.lineChartLabels2">
   </app-stock-graphical-interface>
 
-  <span fxLayout="row" fxLayoutAlign="center center" class="error-message2" *ngIf="hasSubmitted2 && throwError2">Enter a valid symbol!</span>
+  <span fxLayout="row" fxLayoutAlign="center center" class="error-message2" *ngIf="hasSubmitted2 && throwError2">Stock was not found!</span>
 
 </div>
