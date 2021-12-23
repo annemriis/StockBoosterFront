@@ -12,4 +12,8 @@ export class FooterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  backToTop() {
+    // @ts-ignore
+    document.getElementById('top').scrollIntoView();
+  }
 }
